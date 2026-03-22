@@ -1,1463 +1,2662 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FreeLife — Sponsorship Packages</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #08080c;
-    --surface: #111118;
-    --surface-2: #19191f;
-    --border: rgba(255,255,255,0.06);
-    --border-strong: rgba(255,255,255,0.12);
-    --white: #f5f5f7;
-    --muted: #a1a1aa;
-    --dim: #71717a;
-    --teal: #2dd4bf;
-    --teal-dim: rgba(45,212,191,0.08);
-    --teal-mid: rgba(45,212,191,0.15);
-    --warm: #f59e0b;
-    --warm-dim: rgba(245,158,11,0.08);
-    --green-dim: rgba(34,197,94,0.08);
-    --green: #22c55e;
-    --rose: #fb7185;
-    --sans: 'Space Grotesk', -apple-system, sans-serif;
-    --serif: 'Instrument Serif', Georgia, serif;
-    --mono: 'JetBrains Mono', monospace;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--white);
-    font-family: var(--sans);
-    font-size: 15px;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ---- HERO ---- */
-  .hero {
-    min-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 4rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url('dome-community.png') center center / cover no-repeat;
-    opacity: 0.12;
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, var(--bg) 0%, transparent 30%, transparent 60%, var(--bg) 100%);
-    pointer-events: none;
-  }
-
-  .hero > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero__eyebrow {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 2rem;
-  }
-
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    font-weight: 400;
-    line-height: 1.05;
-    color: var(--white);
-    max-width: 800px;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--teal);
-  }
-
-  .hero__sub {
-    font-size: 1.05rem;
-    color: var(--muted);
-    max-width: 540px;
-    line-height: 1.8;
-    margin-bottom: 3rem;
-  }
-
-  .hero__numbers {
-    display: flex;
-    gap: 4rem;
-    padding-top: 3rem;
-    border-top: 1px solid var(--border);
-  }
-
-  .hero__num {
-    text-align: center;
-  }
-
-  .hero__num strong {
-    display: block;
-    font-family: var(--mono);
-    font-size: 2rem;
-    font-weight: 500;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-
-  .hero__num span {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--dim);
-  }
-
-  /* ---- LAYOUT ---- */
-  .wrap {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .wrap--narrow {
-    max-width: 720px;
-  }
-
-  .section {
-    padding: 6rem 0;
-  }
-
-  .section + .section {
-    border-top: 1px solid var(--border);
-  }
-
-  /* ---- TYPOGRAPHY ---- */
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .headline {
-    font-family: var(--serif);
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 400;
-    line-height: 1.15;
-    color: var(--white);
-    margin-bottom: 1rem;
-  }
-
-  .headline em { font-style: italic; color: var(--teal); }
-
-  .body-text {
-    font-size: 0.92rem;
-    color: var(--muted);
-    line-height: 1.8;
-    max-width: 600px;
-  }
-
-  /* ---- BIG PRICE ---- */
-  .price-block {
-    padding: 5rem 0;
-    text-align: center;
-    position: relative;
-  }
-
-  .price-block::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent, var(--teal-dim), transparent);
-    pointer-events: none;
-  }
-
-  .price-amount {
-    font-family: var(--mono);
-    font-size: clamp(4rem, 10vw, 7rem);
-    font-weight: 700;
-    color: var(--teal);
-    line-height: 1;
-    letter-spacing: -0.03em;
-  }
-
-  .price-context {
-    font-size: 1rem;
-    color: var(--muted);
-    margin-top: 0.75rem;
-  }
-
-  .price-sub {
-    font-size: 0.8rem;
-    color: var(--dim);
-    margin-top: 0.25rem;
-  }
-
-  .price-anchors {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin-top: 3rem;
-    border-radius: 12px;
-    overflow: hidden;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .price-anchor {
-    background: var(--surface);
-    padding: 1.5rem;
-    text-align: center;
-  }
-
-  .price-anchor__val {
-    font-family: var(--mono);
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 0.25rem;
-  }
-
-  .price-anchor__val--teal { color: var(--teal); }
-
-  .price-anchor__label {
-    font-size: 0.72rem;
-    color: var(--dim);
-    line-height: 1.5;
-  }
-
-  /* ---- SPLIT LAYOUT ---- */
-  .split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-
-  .split--reverse { direction: rtl; }
-  .split--reverse > * { direction: ltr; }
-
-  /* ---- PULL QUOTE ---- */
-  .pull-quote {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    font-style: italic;
-    line-height: 1.5;
-    color: var(--white);
-    padding: 2rem 0;
-    border-top: 2px solid var(--teal);
-    margin: 2rem 0;
-  }
-
-  .pull-quote span { color: var(--teal); }
-
-  /* ---- TABLE ---- */
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.85rem;
-  }
-
-  .data-table thead th {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--dim);
-    text-align: left;
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--border-strong);
-  }
-
-  .data-table tbody td {
-    padding: 0.85rem 1rem;
-    border-bottom: 1px solid var(--border);
-    color: var(--muted);
-  }
-
-  .data-table tbody tr:last-child td { border-bottom: none; }
-
-  .data-table .accent { color: var(--teal); font-weight: 600; }
-  .data-table .gold { color: var(--warm); font-weight: 600; }
-  .data-table .green { color: var(--green); }
-  .data-table .white { color: var(--white); }
-
-  .data-table .row-highlight td {
-    border-top: 2px solid var(--teal);
-    color: var(--teal);
-    font-weight: 600;
-  }
-
-  /* ---- INLINE STATS ---- */
-  .stat-row {
-    display: flex;
-    gap: 3rem;
-    padding: 2rem 0;
-    flex-wrap: wrap;
-  }
-
-  .stat-row__item {
-    flex: 1;
-    min-width: 160px;
-  }
-
-  .stat-row__num {
-    font-family: var(--mono);
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--teal);
-    line-height: 1;
-    margin-bottom: 0.4rem;
-  }
-
-  .stat-row__num--warm { color: var(--warm); }
-  .stat-row__num--green { color: var(--green); }
-
-  .stat-row__label {
-    font-size: 0.78rem;
-    color: var(--dim);
-    line-height: 1.5;
-  }
-
-  /* ---- STACKED LIST ---- */
-  .stack-list {
-    list-style: none;
-  }
-
-  .stack-list li {
-    display: grid;
-    grid-template-columns: 2.5rem 1fr;
-    gap: 1rem;
-    padding: 1.25rem 0;
-    border-bottom: 1px solid var(--border);
-    align-items: start;
-  }
-
-  .stack-list li:last-child { border-bottom: none; }
-
-  .stack-list__num {
-    font-family: var(--mono);
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: var(--teal);
-    background: var(--teal-dim);
-    width: 2.5rem;
-    height: 2.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-  }
-
-  .stack-list__title {
-    font-weight: 600;
-    font-size: 0.88rem;
-    color: var(--white);
-    margin-bottom: 0.2rem;
-  }
-
-  .stack-list__desc {
-    font-size: 0.8rem;
-    color: var(--dim);
-    line-height: 1.6;
-  }
-
-  /* ---- VS ROWS ---- */
-  .vs-table {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-
-  .vs-header {
-    display: grid;
-    grid-template-columns: 140px 1fr 1fr;
-    background: var(--surface-2);
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--dim);
-  }
-
-  .vs-header > div { padding: 0.75rem 1rem; }
-  .vs-header > div:last-child { color: var(--teal); }
-
-  .vs-row {
-    display: grid;
-    grid-template-columns: 140px 1fr 1fr;
-    border-top: 1px solid var(--border);
-  }
-
-  .vs-row > div { padding: 1rem; }
-
-  .vs-row__budget {
-    font-family: var(--mono);
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: var(--white);
-    background: var(--surface);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .vs-row__budget small {
-    font-weight: 400;
-    font-size: 0.68rem;
-    color: var(--dim);
-    display: block;
-    margin-top: 0.15rem;
-  }
-
-  .vs-row__old {
-    font-size: 0.82rem;
-    color: var(--dim);
-    line-height: 1.6;
-    background: var(--surface);
-    border-left: 1px solid var(--border);
-  }
-
-  .vs-row__new {
-    font-size: 0.82rem;
-    color: var(--white);
-    line-height: 1.6;
-    background: var(--teal-dim);
-    border-left: 1px solid var(--border);
-  }
-
-  .vs-row__new strong { color: var(--teal); }
-
-  /* ---- BANNER ---- */
-  .banner {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2rem 2.5rem;
-    margin: 2rem 0;
-    font-size: 0.88rem;
-    color: var(--muted);
-    line-height: 1.8;
-  }
-
-  .banner strong { color: var(--white); }
-  .banner--teal { border-color: var(--teal); border-left-width: 3px; }
-  .banner--teal strong { color: var(--teal); }
-  .banner--warm { border-color: var(--warm); border-left-width: 3px; }
-  .banner--warm strong { color: var(--warm); }
-  .banner--green { border-color: var(--green); border-left-width: 3px; }
-  .banner--green strong { color: var(--green); }
-
-  /* ---- BIG NUMBER FEATURE ---- */
-  .big-num-grid {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 2rem;
-    align-items: center;
-    padding: 2rem 0;
-  }
-
-  .big-num-grid__number {
-    font-family: var(--mono);
-    font-size: 5rem;
-    font-weight: 700;
-    line-height: 1;
-    color: var(--teal);
-    letter-spacing: -0.04em;
-  }
-
-  .big-num-grid__number--warm { color: var(--warm); }
-
-  /* ---- CENTER CARDS ---- */
-  .center-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    margin: 2rem 0;
-  }
-
-  .center-card {
-    background: var(--surface);
-    padding: 2rem;
-    position: relative;
-  }
-
-  .center-card--featured {
-    background: var(--surface-2);
-  }
-
-  .center-card--featured::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--warm);
-  }
-
-  .center-card__tier {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--dim);
-    margin-bottom: 1rem;
-  }
-
-  .center-card__price {
-    font-family: var(--mono);
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--white);
-    margin-bottom: 0.25rem;
-  }
-
-  .center-card--featured .center-card__price { color: var(--warm); }
-
-  .center-card__annual {
-    font-size: 0.75rem;
-    color: var(--dim);
-    margin-bottom: 1.25rem;
-  }
-
-  .center-card__desc {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  /* ---- SCARCITY ---- */
-  .scarcity-bar {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    padding: 2rem 0;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .scarcity-item {
-    text-align: center;
-  }
-
-  .scarcity-item__num {
-    font-family: var(--mono);
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--warm);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .scarcity-item__label {
-    font-size: 0.78rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  /* ---- CTA ---- */
-  .cta {
-    text-align: center;
-    padding: 6rem 2rem;
-    position: relative;
-  }
-
-  .cta::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(45,212,191,0.04) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .cta__email {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 1rem;
-    color: var(--teal);
-    background: var(--teal-dim);
-    padding: 0.75rem 2rem;
-    border-radius: 100px;
-    border: 1px solid rgba(45,212,191,0.2);
-    margin-top: 2rem;
-    text-decoration: none;
-  }
-
-  .cta__steps {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin-top: 3rem;
-    text-align: left;
-  }
-
-  .cta__step {
-    max-width: 280px;
-  }
-
-  .cta__step-num {
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    color: var(--teal);
-    letter-spacing: 0.15em;
-    margin-bottom: 0.5rem;
-  }
-
-  .cta__step-title {
-    font-weight: 600;
-    font-size: 0.92rem;
-    color: var(--white);
-    margin-bottom: 0.25rem;
-  }
-
-  .cta__step-desc {
-    font-size: 0.78rem;
-    color: var(--dim);
-    line-height: 1.6;
-  }
-
-  /* ---- FOOTER ---- */
-  .footer {
-    padding: 2rem;
-    text-align: center;
-    font-size: 0.72rem;
-    color: var(--dim);
-    border-top: 1px solid var(--border);
-  }
-
-  /* ---- SOURCE ---- */
-  .source {
-    font-size: 0.7rem;
-    color: var(--dim);
-    font-style: italic;
-    margin-top: 1.5rem;
-  }
-
-  /* ---- RESPONSIVE ---- */
-  @media (max-width: 768px) {
-    .hero { min-height: auto; padding: 4rem 1.5rem; }
-    .hero__numbers { flex-direction: column; gap: 1.5rem; }
-    .split { grid-template-columns: 1fr; gap: 2rem; }
-    .split--reverse { direction: ltr; }
-    .price-anchors { grid-template-columns: 1fr; }
-    .vs-header, .vs-row { grid-template-columns: 1fr; }
-    .vs-row__budget { padding: 0.75rem 1rem; }
-    .vs-row__old, .vs-row__new { padding: 0.75rem 1rem; border-left: none; border-top: 1px solid var(--border); }
-    .center-cards { grid-template-columns: 1fr; }
-    .scarcity-bar { grid-template-columns: 1fr; gap: 1.5rem; }
-    .cta__steps { flex-direction: column; align-items: center; }
-    .wrap { padding: 0 1.5rem; }
-    .section { padding: 4rem 0; }
-    .big-num-grid { grid-template-columns: 1fr; }
-    .big-num-grid__number { font-size: 3.5rem; }
-    .stat-row { gap: 1.5rem; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Village — Free Housing. Free Energy. Funded by Creators.</title>
+  <meta name="description" content="Hurricane-proof geodesic dome homes with integrated solar. Zero cost to residents. A creator economy that funds the entire operation.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Creator Village — Free Housing. Free Energy. Funded by Creators.">
+  <meta property="og:description" content="Hurricane-proof geodesic dome homes with integrated solar. Zero cost to residents. A creator economy that funds the entire operation.">
+  <meta property="og:image" content="https://creatorvillage.org/dome-community.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://creatorvillage.org">
+  <meta property="og:site_name" content="Creator Village">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Creator Village — Free Housing. Free Energy. Funded by Creators.">
+  <meta name="twitter:description" content="Hurricane-proof geodesic dome homes with integrated solar. Zero cost to residents. A creator economy that funds the entire operation.">
+  <meta name="twitter:image" content="https://creatorvillage.org/dome-community.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       CSS CUSTOM PROPERTIES
+       ============================================ */
+    :root {
+      --clr-bg: #0a0a0c;
+      --clr-bg-alt: #111115;
+      --clr-bg-card: #16161a;
+      --clr-bg-card-hover: #1c1c22;
+      --clr-surface: #1e1e24;
+      --clr-border: rgba(255,255,255,0.06);
+      --clr-border-light: rgba(255,255,255,0.1);
+      --clr-text: #e8e6e3;
+      --clr-text-muted: #8a8a8e;
+      --clr-text-dim: #5a5a5e;
+      --clr-white: #ffffff;
+
+      --clr-housing: #4ecdc4;
+      --clr-housing-glow: rgba(78,205,196,0.15);
+      --clr-housing-deep: rgba(78,205,196,0.08);
+      --clr-energy: #f4c542;
+      --clr-food: #7bc67e;
+      --clr-internet: #6c9fff;
+      --clr-accent: #a78bfa;
+      --clr-accent-glow: rgba(167,139,250,0.12);
+      --clr-warning: #ef4444;
+
+      --ff-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --ff-serif: 'Playfair Display', Georgia, serif;
+
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* ============================================
+       RESET & BASE
+       ============================================ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--ff-sans);
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    ::selection {
+      background: var(--clr-housing);
+      color: var(--clr-bg);
+    }
+
+    /* ============================================
+       UTILITY
+       ============================================ */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: 7rem 0;
+      position: relative;
+    }
+
+    .section--sm { padding: 5rem 0; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clr-housing);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 2rem;
+      height: 1px;
+      background: var(--clr-housing);
+    }
+
+    .section-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--clr-white);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--clr-text-muted);
+      max-width: 650px;
+      line-height: 1.8;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--clr-border);
+      border: none;
+    }
+
+    .housing-accent {
+      color: var(--clr-housing);
+    }
+
+    /* ============================================
+       ANIMATED BACKGROUND
+       ============================================ */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-glow--1 {
+      top: -200px;
+      right: -100px;
+      background: var(--clr-housing);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .bg-glow--2 {
+      bottom: 20%;
+      left: -200px;
+      background: var(--clr-housing);
+      animation: float 25s ease-in-out infinite reverse;
+    }
+
+    .bg-glow--3 {
+      top: 50%;
+      right: -150px;
+      background: var(--clr-accent);
+      animation: float 22s ease-in-out infinite 5s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.05); }
+      66% { transform: translate(-20px, 30px) scale(0.95); }
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      transition: all 0.4s var(--ease-out);
+    }
+
+    .nav.scrolled {
+      background: rgba(10,10,12,0.85);
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      border-bottom: 1px solid var(--clr-border);
+      padding: 0.75rem 0;
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__logo {
+      font-family: var(--ff-serif);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--clr-white);
+      letter-spacing: -0.02em;
+    }
+
+    .nav__logo span {
+      color: var(--clr-food);
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--clr-text-muted);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--clr-housing);
+      border-radius: 1px;
+      transition: width 0.3s var(--ease-out);
+    }
+
+    .nav__links a:hover { color: var(--clr-white); }
+    .nav__links a:hover::after { width: 100%; }
+
+    .nav__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--clr-text-muted);
+      transition: color 0.3s;
+    }
+
+    .nav__back:hover { color: var(--clr-housing); }
+
+    .nav__back svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s var(--ease-out);
+    }
+
+    .nav__back:hover svg {
+      transform: translateX(-4px);
+    }
+
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--clr-white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* Mobile menu */
+    .nav__mobile {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10,10,12,0.97);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .nav__mobile.active {
+      display: flex;
+    }
+
+    .nav__mobile a {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--clr-text-muted);
+      transition: color 0.3s;
+    }
+
+    .nav__mobile a:hover { color: var(--clr-housing); }
+
+    .nav__mobile-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: var(--clr-white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 10rem 0 5rem;
+    }
+
+    .hero__content {
+      max-width: 800px;
+    }
+
+    .hero__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--clr-text-muted);
+      margin-bottom: 2rem;
+      transition: color 0.3s;
+      animation: fadeInUp 0.6s var(--ease-out) both;
+    }
+
+    .hero__back:hover { color: var(--clr-housing); }
+
+    .hero__back svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s var(--ease-out);
+    }
+
+    .hero__back:hover svg { transform: translateX(-4px); }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 1.25rem;
+      background: var(--clr-housing-deep);
+      border: 1px solid rgba(78,205,196,0.2);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--clr-housing);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.8s var(--ease-out) 0.1s both;
+    }
+
+    .hero__badge .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--clr-housing);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero__icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s var(--ease-out) 0.15s both;
+    }
+
+    .hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--clr-white);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+      animation: fadeInUp 0.8s var(--ease-out) 0.2s both;
+    }
+
+    .hero__subtitle {
+      font-size: 1.3rem;
+      color: var(--clr-text-muted);
+      max-width: 600px;
+      line-height: 1.7;
+      animation: fadeInUp 0.8s var(--ease-out) 0.3s both;
+    }
+
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--clr-border);
+      animation: fadeInUp 0.8s var(--ease-out) 0.5s both;
+    }
+
+    .hero__stat-value {
+      font-family: var(--ff-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--clr-housing);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero__stat-label {
+      font-size: 0.78rem;
+      color: var(--clr-text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================
+       CONTENT CARDS
+       ============================================ */
+    .content-card {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .content-card:hover {
+      border-color: var(--clr-border-light);
+    }
+
+    .content-card__title {
+      font-family: var(--ff-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--clr-white);
+      margin-bottom: 1rem;
+    }
+
+    .content-card__text {
+      font-size: 0.92rem;
+      color: var(--clr-text-muted);
+      line-height: 1.8;
+    }
+
+    /* ============================================
+       STEPS / PROCESS
+       ============================================ */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .step:hover {
+      border-color: rgba(78,205,196,0.25);
+      transform: translateY(-4px);
+    }
+
+    .step__number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--clr-housing-glow);
+      color: var(--clr-housing);
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step__title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--clr-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .step__desc {
+      font-size: 0.85rem;
+      color: var(--clr-text-muted);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       DATA TABLES
+       ============================================ */
+    .data-table-wrapper {
+      overflow-x: auto;
+      margin-top: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--clr-border);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .data-table thead {
+      background: var(--clr-surface);
+    }
+
+    .data-table th {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--clr-housing);
+      border-bottom: 1px solid var(--clr-border);
+      white-space: nowrap;
+    }
+
+    .data-table td {
+      padding: 0.9rem 1.25rem;
+      color: var(--clr-text);
+      border-bottom: 1px solid var(--clr-border);
+      vertical-align: top;
+    }
+
+    .data-table tbody tr {
+      background: var(--clr-bg-card);
+      transition: background 0.2s;
+    }
+
+    .data-table tbody tr:hover {
+      background: var(--clr-bg-card-hover);
+    }
+
+    .data-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table .highlight-row {
+      background: rgba(78,205,196,0.06);
+      font-weight: 600;
+    }
+
+    .data-table .highlight-row td {
+      color: var(--clr-white);
+    }
+
+    .data-table .total-row {
+      background: rgba(78,205,196,0.08);
+    }
+
+    .data-table .total-row td {
+      font-weight: 700;
+      color: var(--clr-white);
+      border-top: 2px solid rgba(78,205,196,0.3);
+    }
+
+    .data-table .note {
+      font-size: 0.8rem;
+      color: var(--clr-text-dim);
+    }
+
+    /* ============================================
+       CALLOUT BOX
+       ============================================ */
+    .callout {
+      background: linear-gradient(135deg, rgba(239,68,68,0.08), rgba(244,197,66,0.06));
+      border: 1px solid rgba(239,68,68,0.2);
+      border-left: 4px solid var(--clr-warning);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      margin-top: 2rem;
+    }
+
+    .callout__title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--clr-warning);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .callout__text {
+      font-size: 0.9rem;
+      color: var(--clr-text-muted);
+      line-height: 1.8;
+    }
+
+    .callout--info {
+      background: linear-gradient(135deg, var(--clr-housing-deep), rgba(78,205,196,0.04));
+      border-color: rgba(78,205,196,0.2);
+      border-left-color: var(--clr-housing);
+    }
+
+    .callout--info .callout__title {
+      color: var(--clr-housing);
+    }
+
+    .callout--success {
+      background: linear-gradient(135deg, rgba(123,198,126,0.08), rgba(123,198,126,0.04));
+      border-color: rgba(123,198,126,0.2);
+      border-left-color: var(--clr-food);
+    }
+
+    .callout--success .callout__title {
+      color: var(--clr-food);
+    }
+
+    /* ============================================
+       RECOMMENDED APPROACH
+       ============================================ */
+    .recommend {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .recommend__card {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .recommend__card--primary {
+      border-color: rgba(78,205,196,0.3);
+      background: linear-gradient(135deg, rgba(78,205,196,0.06), var(--clr-bg-card));
+    }
+
+    .recommend__card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(78,205,196,0.4);
+    }
+
+    .recommend__tag {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      background: var(--clr-housing-glow);
+      color: var(--clr-housing);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    .recommend__title {
+      font-family: var(--ff-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--clr-white);
+      margin-bottom: 1rem;
+    }
+
+    .recommend__text {
+      font-size: 0.9rem;
+      color: var(--clr-text-muted);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .recommend__list {
+      list-style: none;
+    }
+
+    .recommend__list li {
+      padding: 0.35rem 0;
+      font-size: 0.88rem;
+      color: var(--clr-text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .recommend__list .check {
+      color: var(--clr-housing);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* ============================================
+       CLT VISUAL STEPS
+       ============================================ */
+    .clt-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .clt-step {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .clt-step:hover {
+      border-color: rgba(78,205,196,0.25);
+      transform: translateY(-3px);
+    }
+
+    .clt-step__number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--clr-housing-glow);
+      color: var(--clr-housing);
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      border: 2px solid rgba(78,205,196,0.2);
+    }
+
+    .clt-step__title {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--clr-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .clt-step__desc {
+      font-size: 0.82rem;
+      color: var(--clr-text-dim);
+      line-height: 1.6;
+    }
+
+    .clt-step__highlight {
+      color: var(--clr-housing);
+      font-weight: 700;
+    }
+
+    /* ============================================
+       EXAMPLE CARDS
+       ============================================ */
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .example-card {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .example-card:hover {
+      border-color: rgba(78,205,196,0.25);
+      transform: translateY(-3px);
+    }
+
+    .example-card__name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--clr-white);
+      margin-bottom: 0.25rem;
+    }
+
+    .example-card__location {
+      font-size: 0.78rem;
+      color: var(--clr-housing);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+
+    .example-card__detail {
+      font-size: 0.85rem;
+      color: var(--clr-text-muted);
+      line-height: 1.7;
+    }
+
+    .example-card__stat {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--clr-border);
+    }
+
+    .example-card__stat-item {
+      flex: 1;
+    }
+
+    .example-card__stat-value {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--clr-housing);
+    }
+
+    .example-card__stat-label {
+      font-size: 0.7rem;
+      color: var(--clr-text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ============================================
+       WATER SYSTEMS GRID
+       ============================================ */
+    .systems-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .system-card {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .system-card:hover {
+      border-color: rgba(78,205,196,0.25);
+    }
+
+    .system-card__icon {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .system-card__title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--clr-white);
+      margin-bottom: 1rem;
+    }
+
+    .system-card__item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--clr-border);
+    }
+
+    .system-card__item:last-child {
+      border-bottom: none;
+    }
+
+    .system-card__item-label {
+      color: var(--clr-text-muted);
+    }
+
+    .system-card__item-value {
+      color: var(--clr-white);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .system-card__savings {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: rgba(78,205,196,0.08);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .system-card__savings-value {
+      font-weight: 700;
+      color: var(--clr-housing);
+      font-size: 0.9rem;
+    }
+
+    .system-card__savings-label {
+      font-size: 0.75rem;
+      color: var(--clr-text-dim);
+    }
+
+    /* ============================================
+       PROGRAMS GRID
+       ============================================ */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    .program-card {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      display: flex;
+      gap: 1.25rem;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .program-card:hover {
+      border-color: var(--clr-border-light);
+    }
+
+    .program-card__icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--clr-housing-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .program-card__name {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--clr-white);
+      margin-bottom: 0.25rem;
+    }
+
+    .program-card__amount {
+      font-size: 0.82rem;
+      color: var(--clr-housing);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .program-card__desc {
+      font-size: 0.82rem;
+      color: var(--clr-text-dim);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       BUDGET SECTION
+       ============================================ */
+    .budget-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .budget-card {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .budget-card:hover {
+      border-color: rgba(78,205,196,0.25);
+      transform: translateY(-3px);
+    }
+
+    .budget-card__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--clr-text-dim);
+      margin-bottom: 0.75rem;
+    }
+
+    .budget-card__value {
+      font-family: var(--ff-serif);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--clr-housing);
+      margin-bottom: 0.25rem;
+    }
+
+    .budget-card__note {
+      font-size: 0.82rem;
+      color: var(--clr-text-muted);
+    }
+
+    .budget-total {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(78,205,196,0.1), rgba(78,205,196,0.04));
+      border: 1px solid rgba(78,205,196,0.2);
+      border-radius: 16px;
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .budget-total__label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--clr-text);
+    }
+
+    .budget-total__sublabel {
+      font-size: 0.85rem;
+      color: var(--clr-text-dim);
+      margin-top: 0.25rem;
+    }
+
+    .budget-total__value {
+      font-family: var(--ff-serif);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--clr-housing);
+    }
+
+    .budget-total__subvalue {
+      font-size: 0.9rem;
+      color: var(--clr-text-muted);
+      text-align: right;
+    }
+
+    /* ============================================
+       PASSIVE HOUSE
+       ============================================ */
+    .passive-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .passive-card {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .passive-card:hover {
+      border-color: rgba(78,205,196,0.25);
+    }
+
+    .passive-card__value {
+      font-family: var(--ff-serif);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--clr-housing);
+      margin-bottom: 0.25rem;
+    }
+
+    .passive-card__label {
+      font-size: 0.85rem;
+      color: var(--clr-text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .passive-card__sub {
+      font-size: 0.75rem;
+      color: var(--clr-text-dim);
+    }
+
+    /* ============================================
+       SOURCES
+       ============================================ */
+    .sources {
+      margin-top: 2rem;
+    }
+
+    .sources__title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--clr-text-dim);
+      margin-bottom: 1rem;
+    }
+
+    .sources__list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .sources__list li {
+      font-size: 0.78rem;
+      color: var(--clr-text-dim);
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .sources__list li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--clr-housing);
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      border-top: 1px solid var(--clr-border);
+      padding: 4rem 0 3rem;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer__brand {
+      font-family: var(--ff-serif);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--clr-white);
+      margin-bottom: 1rem;
+    }
+
+    .footer__brand span { color: var(--clr-food); }
+
+    .footer__tagline {
+      font-size: 0.88rem;
+      color: var(--clr-text-dim);
+      line-height: 1.7;
+      max-width: 300px;
+    }
+
+    .footer__col-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--clr-text-dim);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer__links {
+      list-style: none;
+    }
+
+    .footer__links li { margin-bottom: 0.75rem; }
+
+    .footer__links a {
+      font-size: 0.88rem;
+      color: var(--clr-text-muted);
+      transition: color 0.2s;
+    }
+
+    .footer__links a:hover { color: var(--clr-white); }
+
+    .footer__bottom {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--clr-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--clr-text-dim);
+    }
+
+    /* ============================================
+       SCROLL ANIMATIONS
+       ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1024px) {
+      .hero__stats { grid-template-columns: repeat(2, 1fr); }
+      .recommend { grid-template-columns: 1fr; }
+      .clt-flow { grid-template-columns: repeat(2, 1fr); }
+      .examples-grid { grid-template-columns: 1fr; }
+      .systems-grid { grid-template-columns: 1fr; }
+      .programs-grid { grid-template-columns: 1fr; }
+      .budget-summary { grid-template-columns: repeat(2, 1fr); }
+      .passive-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid { grid-template-columns: repeat(2, 1fr); }
+      .sources__list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 5rem 0; }
+      .container { padding: 0 1.25rem; }
+
+      .nav__links { display: none; }
+      .nav__hamburger { display: flex; }
+
+      .hero { min-height: auto; padding: 7rem 0 4rem; }
+      .hero__stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .hero__stat-value { font-size: 1.8rem; }
+
+      .steps { grid-template-columns: 1fr; }
+      .clt-flow { grid-template-columns: 1fr; }
+      .budget-summary { grid-template-columns: 1fr; }
+      .budget-total { flex-direction: column; text-align: center; gap: 1rem; padding: 2rem; }
+      .budget-total__subvalue { text-align: center; }
+      .passive-grid { grid-template-columns: 1fr; }
+
+      .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero__title { font-size: 2.5rem; }
+      .hero__stats { grid-template-columns: 1fr 1fr; }
+      .data-table { font-size: 0.78rem; }
+      .data-table th, .data-table td { padding: 0.65rem 0.75rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ============================================ -->
-<!-- HERO -->
-<!-- ============================================ -->
-<div class="hero">
-  <div class="hero__eyebrow">Brand Partnership Opportunities</div>
-  <h1>Your brand, <em>lived in</em><br>by 95+ creators</h1>
-  <p class="hero__sub">FreeLife is a gated community of geodesic dome homes in Clark County, Nevada &mdash; each one home to an active content creator. Sponsor a dome and your brand becomes part of their daily life, their content, and their audience.</p>
+  <!-- Background Effects -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--1"></div>
+  <div class="bg-glow bg-glow--2"></div>
+  <div class="bg-glow bg-glow--3"></div>
 
-  <div class="hero__numbers">
-    <div class="hero__num">
-      <strong>95</strong>
-      <span>Creator Homes</span>
+  <!-- ==========================================
+       NAVIGATION
+       ========================================== -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="/" class="nav__logo">Creator<span>Village</span></a>
+      <ul class="nav__links">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#why-cleado">Why Cleado</a></li>
+        <li><a href="#payment-models">Ownership Model</a></li>
+        <li><a href="#solar-energy">Solar &amp; Energy</a></li>
+        <li><a href="#clt">Land Trust</a></li>
+        <li><a href="#budget">Budget</a></li>
+        <li><a href="#creator-community">Creator Model</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <div class="hero__num">
-      <strong>3</strong>
-      <span>Community Studios</span>
-    </div>
-    <div class="hero__num">
-      <strong>30,000+</strong>
-      <span>Content Pieces / Month</span>
-    </div>
-    <div class="hero__num">
-      <strong>365</strong>
-      <span>Days / Year</span>
-    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav__mobile" id="mobileMenu">
+    <button class="nav__mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+    <a href="#how-it-works" class="mobile-link">How It Works</a>
+    <a href="#why-cleado" class="mobile-link">Why Cleado</a>
+    <a href="#payment-models" class="mobile-link">Ownership Model</a>
+    <a href="#solar-energy" class="mobile-link">Solar &amp; Energy</a>
+    <a href="#clt" class="mobile-link">Land Trust</a>
+    <a href="#water-waste" class="mobile-link">Water &amp; Waste</a>
+    <a href="#programs" class="mobile-link">Programs</a>
+    <a href="#budget" class="mobile-link">Budget</a>
+    <a href="#creator-community" class="mobile-link">Creator Model</a>
+    <a href="/">Home</a>
   </div>
-</div>
 
-
-<!-- ============================================ -->
-<!-- ABOUT -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <div class="split">
-      <div>
-        <span class="eyebrow">The Property</span>
-        <h2 class="headline">Not a creator house.<br><em>A creator community.</em></h2>
-        <p class="body-text">98 geodesic domes on a single gated property, 30 minutes from the Las Vegas Strip. 95 are 9-meter creator homes. 3 are 14-meter community centers with recording rooms, podcast setups, and collaboration spaces. Year-round filming weather. No state income tax.</p>
-        <p class="body-text" style="margin-top: 1rem;">Every creator lives in their dome full-time. This isn't a 6-month lease or a pop-up that dissolves. It's a permanent community where creators build their lives &mdash; and your brand is part of that life, every day.</p>
-      </div>
-      <div>
-        <div class="pull-quote">
-          FreeLife is 95+ creators <span>actively collaborating</span> to grow each other. When one creator features another, both audiences grow.
+  <!-- ==========================================
+       HERO
+       ========================================== -->
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span class="dot"></span>
+          Creator Living Ecosystem
         </div>
-        <p class="body-text">Creators film together, guest on each other's channels, co-host livestreams, and cross-promote daily. A sponsored dome doesn't get exposure from one creator &mdash; it gets pulled into the content of dozens of neighbors. Your brand reaches the combined, cross-pollinated audiences of an entire community lifting each other up.</p>
+        <h1 class="hero__title">Live Free. <span class="housing-accent">Create</span> Everything.</h1>
+        <p class="hero__subtitle">
+          Creator Village is a private residential community for creators, artists, and entrepreneurs &mdash; modern homes, shared studios, and social hubs in the desert. Residents start at $1,000/mo, but as community brand deals and revenue grow, that cost drops to zero. The goal is fully free living &mdash; funded entirely by the creator economy we build together.
+        </p>
       </div>
-    </div>
-
-    <div style="margin-top: 3rem;">
-      <img src="dome-complex.png" alt="FreeLife Creator's Dome Complex — aerial rendering" style="width: 100%; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 8px 40px rgba(0,0,0,0.5);">
-    </div>
-  </div>
-</div>
-
-
-<!-- ============================================ -->
-<!-- PRICING -->
-<!-- ============================================ -->
-<div class="price-block">
-  <div class="wrap">
-    <span class="eyebrow" style="text-align: center; display: block;">Simple Pricing</span>
-    <div class="price-amount">$3,000<span style="font-size: 0.4em; font-weight: 400; color: var(--muted);">/mo</span></div>
-    <div class="price-context">per dome &bull; interior + exterior branding &bull; $36,000/year</div>
-    <div class="price-sub">12-month contract &bull; Volume discounts available</div>
-
-    <div class="price-anchors">
-      <div class="price-anchor">
-        <div class="price-anchor__val">$2K&ndash;$10K</div>
-        <div class="price-anchor__label">What one macro-influencer post costs. Gone in 24 hours.</div>
+      <div class="hero__image" style="margin-top: 3rem; animation: fadeInUp 0.8s var(--ease-out) 0.35s both;">
+        <img src="dome-complex.png" alt="Creator Village Creator's Dome Complex — aerial rendering" style="width: 100%; border-radius: 16px; box-shadow: 0 8px 40px rgba(0,0,0,0.6); border: 1px solid var(--clr-border);">
       </div>
-      <div class="price-anchor">
-        <div class="price-anchor__val">$10K&ndash;$50K</div>
-        <div class="price-anchor__label">Monthly billboard in Vegas. Zero engagement. Zero content.</div>
-      </div>
-      <div class="price-anchor">
-        <div class="price-anchor__val price-anchor__val--teal">300&ndash;500+</div>
-        <div class="price-anchor__label">Pieces of branded content per dome, per month. Because they live there.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="wrap wrap--narrow" style="text-align: center;">
-    <p class="body-text" style="max-width: none; margin: 0 auto;">One brand per dome. You get <strong style="color: var(--white);">full interior and exterior branding</strong> &mdash; your products installed inside, your brand on the outside. Your brand lives in a content creator's home 365 days a year. Every video, photo, and livestream filmed in that dome features your brand &mdash; organically, authentically, continuously.</p>
-  </div>
-
-  <div class="wrap" style="margin-top: 3rem;">
-    <img src="branded-dome-interior.png" alt="Branded dome interior concept — full brand integration across interior living spaces" style="width: 100%; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 8px 40px rgba(0,0,0,0.5);">
-    <p style="text-align: center; font-size: 0.78rem; color: var(--dim); margin-top: 0.75rem; font-style: italic;">Concept rendering — full brand integration across a dome's interior living spaces.</p>
-  </div>
-</div>
-
-
-<!-- ============================================ -->
-<!-- VOLUME PRICING -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <span class="eyebrow">Volume Pricing</span>
-    <h2 class="headline">More domes. <em>Better rate.</em></h2>
-    <p class="body-text" style="margin-bottom: 2rem;">The more domes you sponsor, the lower the per-dome rate. Each brand can sponsor up to 19 domes &mdash; ensuring no single brand dominates the community while still delivering massive scale.</p>
-
-    <table class="data-table">
-      <thead>
-        <tr><th>Pack</th><th>Domes</th><th>Per Dome / Mo</th><th>Total Monthly</th><th>Total Annual</th><th>Savings</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="white">Single</td><td>1</td><td class="accent">$3,000</td><td>$3,000</td><td>$36,000</td><td>&mdash;</td></tr>
-        <tr><td class="white">5-Pack</td><td>5</td><td class="accent">$2,700</td><td>$13,500</td><td>$162,000</td><td class="green">10% off</td></tr>
-        <tr><td class="white">10-Pack</td><td>10</td><td class="accent">$2,500</td><td>$25,000</td><td>$300,000</td><td class="green">17% off</td></tr>
-        <tr><td class="gold">Max Pack</td><td class="gold">19</td><td class="gold">$2,250</td><td class="gold">$42,750</td><td class="gold">$513,000</td><td class="green">25% off</td></tr>
-      </tbody>
-    </table>
-
-    <div class="banner banner--teal" style="margin-top: 2rem;">
-      <strong>Max out at 19 domes for $42,750/month</strong> and get 19 creators producing content with your products every single day. That's 5,700&ndash;9,500+ branded content pieces per month across all platforms. A social media agency charges the same for 20&ndash;30 posts. Same budget, <strong>190&ndash;475&times; more content.</strong>
-    </div>
-  </div>
-</div>
-
-
-<!-- ============================================ -->
-<!-- EXPOSURE -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <div class="split">
-      <div>
-        <span class="eyebrow">Exposure Data</span>
-        <h2 class="headline">What $3,000/month <em>actually buys.</em></h2>
-        <p class="body-text">Real metrics based on our creator community mix &mdash; 38 nano, 37 micro, and 20 mid-tier creators. Each creator posts across TikTok, Instagram, YouTube, and X daily. Per dome, per month. Multiply by the domes in your pack.</p>
-
-        <div class="stat-row" style="border-top: 1px solid var(--border); margin-top: 2rem;">
-          <div class="stat-row__item">
-            <div class="stat-row__num">300&ndash;500+</div>
-            <div class="stat-row__label">Content pieces per dome/month (across all platforms)</div>
-          </div>
-          <div class="stat-row__item">
-            <div class="stat-row__num--green stat-row__num">3&ndash;10%</div>
-            <div class="stat-row__label">Engagement rate (3&times; macro influencers)</div>
-          </div>
+      <div class="hero__stats">
+        <div>
+          <div class="hero__stat-value">$1K</div>
+          <div class="hero__stat-label">Starting Monthly Cost</div>
         </div>
-
-        <div class="stat-row">
-          <div class="stat-row__item">
-            <div class="stat-row__num--warm stat-row__num">$6&ndash;$10</div>
-            <div class="stat-row__label">Per content piece (market rate: $150&ndash;$310)</div>
-          </div>
-          <div class="stat-row__item">
-            <div class="stat-row__num">500K&ndash;15M</div>
-            <div class="stat-row__label">Est. monthly impressions per dome (varies by tier)</div>
-          </div>
+        <div>
+          <div class="hero__stat-value">$0</div>
+          <div class="hero__stat-label">Goal &mdash; Funded by Brands</div>
+        </div>
+        <div>
+          <div class="hero__stat-value">100</div>
+          <div class="hero__stat-label">Creator Homes</div>
+        </div>
+        <div>
+          <div class="hero__stat-value">5,000</div>
+          <div class="hero__stat-label">kWh/Year Solar Built-In</div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div>
-        <table class="data-table" style="margin-top: 2rem;">
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 1: HOW IT WORKS
+       ========================================== -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">The Process</span>
+        <h2 class="section-title">How it <span class="housing-accent">works.</span></h2>
+        <p class="section-subtitle">
+          From land acquisition to move-in day, Cleado geodesic domes go from delivery to livable home in just 12 hours &mdash; with built-in solar and zero cost to residents.
+        </p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step__number">1</div>
+          <div class="step__title">Acquire Land</div>
+          <div class="step__desc">Land obtained through donation, government surplus programs, or below-market purchase. Cleado domes require no heavy foundations, reducing site prep costs.</div>
+        </div>
+        <div class="step reveal reveal-delay-1">
+          <div class="step__number">2</div>
+          <div class="step__title">Deploy Cleado Domes</div>
+          <div class="step__desc">Patented lightweight geodesic dome kits arrive flat-packed and are assembled on-site in 12 hours. No heavy machinery or specialized labor required.</div>
+        </div>
+        <div class="step reveal reveal-delay-2">
+          <div class="step__number">3</div>
+          <div class="step__title">Instant Solar Power</div>
+          <div class="step__desc">Each dome includes 10 m&sup2; of built-in thin-film solar PV generating ~5,000 kWh/year, with battery storage for fully off-grid operation from day one.</div>
+        </div>
+        <div class="step reveal reveal-delay-3">
+          <div class="step__number">4</div>
+          <div class="step__title">CLT Ownership</div>
+          <div class="step__desc">Housing owned by Creator Village Community Land Trust. Residents receive immediate ownership of their home through a 99-year renewable ground lease at $0/month.</div>
+        </div>
+        <div class="step reveal">
+          <div class="step__number">5</div>
+          <div class="step__title">Zero-Cost Living</div>
+          <div class="step__desc">No rent, no mortgage, no energy bills. Residents contribute through content creation and community participation: maintenance, governance, or mentoring.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 2: CONSTRUCTION METHODS
+       ========================================== -->
+  <section class="section" id="why-cleado">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Our Partner</span>
+        <h2 class="section-title">Why <span class="housing-accent">Cleado.</span></h2>
+        <p class="section-subtitle">
+          Cleado's patented geodesic dome design delivers hurricane-proof, solar-powered housing that assembles in 12 hours &mdash; at a fraction of conventional construction costs.
+        </p>
+      </div>
+
+      <div class="data-table-wrapper reveal">
+        <table class="data-table">
           <thead>
-            <tr><th>Creator Tier</th><th>Followers</th><th># in Community</th><th>Est. Impressions/Mo</th></tr>
+            <tr>
+              <th>Feature</th>
+              <th>Cleado Geodesic Dome</th>
+              <th>Conventional Housing</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td class="white">Nano Creators</td><td>10K&ndash;50K</td><td>38</td><td>500K&ndash;1.5M per dome</td></tr>
-            <tr><td class="white">Micro Influencers</td><td>50K&ndash;100K</td><td>37</td><td>1.5M&ndash;5M per dome</td></tr>
-            <tr><td class="white">Mid-Tier Creators</td><td>100K&ndash;500K</td><td>20</td><td>5M&ndash;15M per dome</td></tr>
-            <tr class="row-highlight"><td>Community Total</td><td>&mdash;</td><td>95</td><td class="accent">175M&ndash;500M+</td></tr>
+            <tr class="highlight-row">
+              <td>Assembly Time</td>
+              <td>12 hours on-site</td>
+              <td>3-12 months</td>
+            </tr>
+            <tr>
+              <td>Foundation Required</td>
+              <td>None &mdash; lightweight design</td>
+              <td>Heavy concrete foundation</td>
+            </tr>
+            <tr class="highlight-row">
+              <td>Hurricane Resistance</td>
+              <td>Cat-5 (&gt;250 km/h winds)</td>
+              <td>Typically Cat-2 or less</td>
+            </tr>
+            <tr>
+              <td>Flood Resistance</td>
+              <td>Flood-resistant design</td>
+              <td>Vulnerable without elevation</td>
+            </tr>
+            <tr>
+              <td>Corrosion</td>
+              <td>Corrosion-free materials</td>
+              <td>Requires ongoing treatment</td>
+            </tr>
+            <tr class="highlight-row">
+              <td>Built-in Solar PV</td>
+              <td>10 m&sup2; thin-film (~5,000 kWh/yr)</td>
+              <td>Separate install ($15K-$25K+)</td>
+            </tr>
+            <tr>
+              <td>Battery Storage</td>
+              <td>Included &mdash; fully off-grid</td>
+              <td>Separate purchase ($8K-$15K)</td>
+            </tr>
+            <tr>
+              <td>Living Space</td>
+              <td>40&ndash;440 m&sup2; (standard 40&ndash;90 m&sup2;)</td>
+              <td>Varies</td>
+            </tr>
+            <tr>
+              <td>Thermal Efficiency</td>
+              <td>R-value ~5 per inch (GFRP panels)</td>
+              <td>R-13 to R-21 standard walls</td>
+            </tr>
+            <tr>
+              <td>Wildfire Resistance</td>
+              <td>GFRP melts without burning (&gt;400&deg;C)</td>
+              <td>Shingle roofs ignite easily</td>
+            </tr>
+            <tr>
+              <td>Embodied Carbon</td>
+              <td>70% lower than traditional</td>
+              <td>High carbon (concrete, steel, logistics)</td>
+            </tr>
+            <tr>
+              <td>Recyclability</td>
+              <td>95&ndash;98% recyclable materials</td>
+              <td>Typically 20-30% recyclable</td>
+            </tr>
+            <tr>
+              <td>Panel Weight</td>
+              <td>35 kg per GFRP sandwich panel</td>
+              <td>Heavy materials require cranes</td>
+            </tr>
+            <tr class="highlight-row">
+              <td>Price per Home</td>
+              <td>US$57,000</td>
+              <td>$150,000&ndash;$400,000+</td>
+            </tr>
+            <tr class="highlight-row">
+              <td>25-Year Lifecycle Cost</td>
+              <td>$55K&ndash;$75K (repairs &lt;$10K, energy $0)</td>
+              <td>$90K&ndash;$830K (region dependent)</td>
+            </tr>
           </tbody>
         </table>
-
-        <p class="source">Sources: Social Insider (TikTok &amp; Instagram benchmarks, 2026) &bull; Buffer (engagement &amp; posting frequency, 11.4M post study) &bull; Metricool (YouTube &amp; X benchmarks, 2026) &bull; Influencer Marketing Hub (tier rates &amp; CPM, 2026) &bull; Hootsuite (reach rates, 2026)</p>
       </div>
-    </div>
 
-    <div class="pull-quote" style="max-width: 700px;">
-      The creator lives there. Your brand isn't placed &mdash; it's <span>lived in</span>. Morning routines, cooking videos, livestreams, podcasts, stories, tweets. 300&ndash;500+ pieces of content per month across TikTok, Instagram, YouTube, and X &mdash; because they literally go home to your product every night.
-    </div>
-  </div>
-</div>
+      <h3 style="font-family: var(--ff-serif); font-size: 1.4rem; color: var(--clr-white); margin-top: 4rem; margin-bottom: 0.5rem;" class="reveal">Climate Resilience &mdash; Proven Performance</h3>
+      <p style="font-size: 0.92rem; color: var(--clr-text-muted); margin-bottom: 2rem;" class="reveal">Cleado domes have been tested against the world's most extreme climate conditions with documented results.</p>
 
-
-<!-- ============================================ -->
-<!-- CREATOR JOURNEYS -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <span class="eyebrow">95+ Stories, 365 Days</span>
-    <h2 class="headline">Every creator is <em>a living series.</em></h2>
-    <p class="body-text" style="margin-bottom: 2rem;">These aren't influencers passing through. They're 95+ people building real lives on camera &mdash; and audiences follow every chapter. Move-in day. First studio session. Career breakthroughs. Friendships forming. Creative evolution over months and years. Your brand isn't in an ad. It's in the story.</p>
-
-    <div class="split">
-      <div>
-        <div class="pull-quote" style="margin-top: 0;">
-          A viewer doesn't watch one video. They follow a creator's <span>entire journey</span> &mdash; and your brand is in every frame of it.
+      <div class="passive-grid">
+        <div class="passive-card reveal">
+          <div class="passive-card__value">100%</div>
+          <div class="passive-card__label">Cat-5 Hurricane Survival Rate</div>
+          <div class="passive-card__sub">Zero structural or roof failures</div>
         </div>
-        <p class="body-text">Traditional sponsorships buy a moment. FreeLife sponsorships buy a narrative. When a creator moves into their dome, their audience watches them unbox, decorate, settle in. They see your brand on day one &mdash; and again six months later when the creator hosts a dinner party, and again a year later when they've fully made the space their own. The brand becomes part of the creator's personal history.</p>
+        <div class="passive-card reveal reveal-delay-1">
+          <div class="passive-card__value">95&ndash;100%</div>
+          <div class="passive-card__label">Northern Climate Survival</div>
+          <div class="passive-card__sub">Wildfires, blizzards, and flooding</div>
+        </div>
+        <div class="passive-card reveal">
+          <div class="passive-card__value">-30&deg;C &rarr; 20&deg;C</div>
+          <div class="passive-card__label">Extreme Cold Performance</div>
+          <div class="passive-card__sub">Comfortable indoor temps in Arctic conditions</div>
+        </div>
+        <div class="passive-card reveal reveal-delay-1">
+          <div class="passive-card__value">60&ndash;180x</div>
+          <div class="passive-card__label">Faster Than Traditional Build</div>
+          <div class="passive-card__sub">12 hours vs 30&ndash;90 days conventional</div>
+        </div>
       </div>
 
-      <div>
-        <ul class="stack-list">
-          <li>
-            <div class="stack-list__num" style="background: var(--warm-dim); color: var(--warm);">01</div>
-            <div>
-              <div class="stack-list__title">Origin Stories</div>
-              <div class="stack-list__desc">Move-in vlogs, dome tours, first impressions. Audiences love beginnings &mdash; and your brand is there from the start.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num" style="background: var(--warm-dim); color: var(--warm);">02</div>
-            <div>
-              <div class="stack-list__title">Growth Arcs</div>
-              <div class="stack-list__desc">Career milestones, follower breakthroughs, creative evolution. Viewers invest in creators who grow &mdash; and they remember what was in the background.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num" style="background: var(--warm-dim); color: var(--warm);">03</div>
-            <div>
-              <div class="stack-list__title">Daily Life Content</div>
-              <div class="stack-list__desc">Morning routines, cooking, workouts, late-night studio sessions. The mundane moments that build loyal, returning audiences day after day.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num" style="background: var(--warm-dim); color: var(--warm);">04</div>
-            <div>
-              <div class="stack-list__title">Cross-Creator Storylines</div>
-              <div class="stack-list__desc">Collaborations, rivalries, friendships, group projects. When 95+ creators share a property, stories overlap &mdash; and audiences cross-pollinate.</div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="banner banner--teal" style="margin-top: 2rem;">
-      <strong>This is the reality-TV model, owned by the creators.</strong> 95+ people living their actual lives, producing content every day, with audiences following along in real time. The difference is there's no network taking a cut &mdash; and your brand is woven into the fabric of their daily lives, not a 15-second ad break they skip.
-    </div>
-  </div>
-</div>
-
-
-<!-- ============================================ -->
-<!-- GROWTH MULTIPLIER -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <span class="eyebrow">The Growth Multiplier</span>
-    <h2 class="headline">These numbers are <em>the floor.</em></h2>
-    <p class="body-text" style="margin-bottom: 2rem;">The impression estimates above are based on current follower counts. But we're not launching quietly. Here's what we're doing to accelerate every creator's growth &mdash; and your brand exposure &mdash; before and after launch.</p>
-
-    <div class="split">
-      <div>
-        <ul class="stack-list">
-          <li>
-            <div class="stack-list__num" style="background: var(--green-dim); color: var(--green);">01</div>
-            <div>
-              <div class="stack-list__title">National Press Campaign</div>
-              <div class="stack-list__desc">We're running a pre-launch PR blitz targeting architecture, tech, creator economy, and culture press. A 98-dome geodesic creator village in the Nevada desert is a story every outlet wants to tell. We're pitching AD, Dezeen, TechCrunch, The Verge, Tubefilter, GQ, Vice, and local Las Vegas media. Every article and segment puts FreeLife &mdash; and our sponsors &mdash; in front of millions before a single creator moves in.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num" style="background: var(--green-dim); color: var(--green);">02</div>
-            <div>
-              <div class="stack-list__title">Build Content &amp; Viral Architecture</div>
-              <div class="stack-list__desc">We're filming the entire construction process &mdash; drone footage, time-lapses, dome installations, interior buildouts. Unique-architecture content is one of TikTok's most reliable viral categories. We'll have 98 domes going up in the desert, and we're turning every phase of the build into a content series that builds anticipation and audience months before launch.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num" style="background: var(--green-dim); color: var(--green);">03</div>
-            <div>
-              <div class="stack-list__title">Celebrity &amp; Mega-Creator Partnerships</div>
-              <div class="stack-list__desc">We're inviting A-list musicians, athletes, and mega-creators to tour, collab, and perform at FreeLife. Celebrity visits will be filmed and posted across every creator's channels. Each visit exposes the entire community &mdash; and every sponsor brand &mdash; to entirely new audiences at massive scale. We're building FreeLife as a destination, not just a neighborhood.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num" style="background: var(--green-dim); color: var(--green);">04</div>
-            <div>
-              <div class="stack-list__title">Docuseries &amp; Media Deals</div>
-              <div class="stack-list__desc">We're actively pursuing documentary and series opportunities with streaming platforms. 95+ creators building real lives in a geodesic dome village is a format that hasn't existed before. Reality-format exposure has historically driven 500&ndash;1,600% follower growth for cast members. A docuseries turns every sponsor brand into a recurring on-screen presence viewed by millions.</div>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <table class="data-table" style="margin-top: 2rem;">
-          <thead>
-            <tr><th>What We're Doing</th><th>Expected Impact</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="white">National PR campaign</td><td>Billions of media impressions pre-launch</td></tr>
-            <tr><td class="white">Construction content series</td><td>Millions of views building audience before move-in</td></tr>
-            <tr><td class="white">Celebrity &amp; mega-creator visits</td><td>10&ndash;30% follower growth per creator, per visit</td></tr>
-            <tr><td class="white">Launch event &amp; grand opening</td><td>95+ creators posting simultaneously from day one</td></tr>
-            <tr><td class="white">Ongoing promotional events</td><td>Monthly activations driving spikes across all channels</td></tr>
-            <tr><td class="white">Cross-creator collaborations</td><td>95+ creators cross-pollinating audiences daily</td></tr>
-            <tr><td class="white">Docuseries &amp; streaming deals</td><td>500&ndash;1,600% follower growth for featured creators</td></tr>
-            <tr><td class="white">Architectural virality</td><td>Dome content consistently hits millions of views</td></tr>
-          </tbody>
-        </table>
-
-        <p class="source">Sources: Influencer Marketing Hub (collaboration ROI, 2026) &bull; Buffer (content frequency &amp; reach, 2026) &bull; Nielsen (branded content recall, 2025) &bull; The Tab (reality-format cast growth data)</p>
-      </div>
-    </div>
-
-    <div class="banner banner--green" style="margin-top: 2rem;">
-      <strong>Early sponsors lock in at today's rates &mdash; before the growth curve hits.</strong> Every creator's audience will grow from the moment we announce. Build content, move-in day, celebrity visits, cross-creator collabs, and docuseries coverage will compound impressions far beyond current baselines. Sponsors who commit early ride the full growth trajectory at the lowest cost.
-    </div>
-  </div>
-</div>
-
-
-<!-- ============================================ -->
-<!-- AUDIENCE -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <span class="eyebrow">Who You Reach</span>
-    <h2 class="headline">Their audiences, <em>your customers.</em></h2>
-    <p class="body-text" style="margin-bottom: 2rem;">You're not buying impressions from a brand account. You're reaching real, engaged audiences that trust the person they follow.</p>
-
-    <div class="big-num-grid">
-      <div class="big-num-grid__number">72%</div>
-      <div>
-        <p style="font-size: 1.1rem; color: var(--white); font-weight: 500; margin-bottom: 0.4rem;">Ages 18&ndash;34</p>
-        <p class="body-text">The hardest demographic to reach through traditional advertising. Creator audiences across all tiers skew young, digitally native, and purchase-ready.</p>
-      </div>
-    </div>
-
-    <div class="big-num-grid">
-      <div class="big-num-grid__number big-num-grid__number--warm">82%</div>
-      <div>
-        <p style="font-size: 1.1rem; color: var(--white); font-weight: 500; margin-bottom: 0.4rem;">Follow purchase recommendations</p>
-        <p class="body-text">Consumers who follow creators say they're likely to buy a product the creator genuinely uses. Not a paid #ad &mdash; a product in their actual home.</p>
-      </div>
-    </div>
-
-    <div class="stat-row" style="border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 2rem 0;">
-      <div class="stat-row__item">
-        <div class="stat-row__num">2&ndash;4</div>
-        <div class="stat-row__label">Platforms per creator (TikTok, IG, YouTube, Twitch, podcasts)</div>
-      </div>
-      <div class="stat-row__item">
-        <div class="stat-row__num--green stat-row__num">60&ndash;70%</div>
-        <div class="stat-row__label">US-based audiences. Vegas draws ~40M visitors/year (LVCVA, 2024).</div>
-      </div>
-      <div class="stat-row__item">
-        <div class="stat-row__num--warm stat-row__num">Organic</div>
-        <div class="stat-row__label">Audiences built on trust, not ad spend. Higher save, share, and CTR.</div>
-      </div>
-    </div>
-
-    <div class="split">
-      <div class="body-text">
-        <strong style="color: var(--white);">Gender split varies by niche.</strong> Lifestyle and beauty creators skew 65&ndash;75% female. Tech and gaming skew 60&ndash;70% male. Fitness and food trend 50/50. Multi-dome packs let you select the audience mix that matches your target.
-      </div>
-      <div class="body-text">
-        <strong style="color: var(--white);">Smaller audiences trust creators like friends.</strong> When your product shows up in their home &mdash; not as a sponsored post, but as part of their daily life &mdash; it reads as a genuine recommendation, not an advertisement.
-      </div>
-    </div>
-
-    <p class="source">Sources: Influencer Marketing Hub (creator demographics by tier, 2026) &bull; Aspire (purchase intent, 2025) &bull; Later x Mavrck (engagement by size, 2025) &bull; LVCVA (visitor statistics, 2025)</p>
-  </div>
-</div>
-
-
-<!-- ============================================ -->
-<!-- MARKET CONTEXT -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <span class="eyebrow">Market Context</span>
-    <h2 class="headline">FreeLife vs <em>everything else.</em></h2>
-
-    <table class="data-table" style="margin: 2rem 0;">
-      <thead>
-        <tr><th>Channel</th><th>Cost</th><th>Duration</th><th>Content Output</th></tr>
-      </thead>
-      <tbody>
-        <tr><td class="white">Sponsored IG post (nano)</td><td>$150&ndash;$500/post</td><td>1 post, 24hr peak</td><td>1 post</td></tr>
-        <tr><td class="white">Sponsored TikTok (nano)</td><td>$50&ndash;$200/post</td><td>1 post, algorithm-driven</td><td>1 post</td></tr>
-        <tr><td class="white">Social media agency</td><td>$15K&ndash;$25K/mo</td><td>Monthly</td><td>20&ndash;30 posts/mo</td></tr>
-        <tr><td class="white">Billboard (Las Vegas)</td><td>$10K&ndash;$50K/mo</td><td>Monthly</td><td>0 posts. Static.</td></tr>
-        <tr><td class="white">Brand pop-up activation</td><td>$75K&ndash;$1M</td><td>3&ndash;5 days</td><td>Event-only</td></tr>
-        <tr><td class="white">Creator house</td><td>$500K&ndash;$600K/year</td><td>Annual</td><td>~20 creators, shared</td></tr>
-        <tr class="row-highlight"><td>FreeLife &mdash; 1 dome</td><td>$3,000/mo</td><td>365 days</td><td>300&ndash;500+ posts/mo</td></tr>
-        <tr class="row-highlight"><td>FreeLife &mdash; 10-Pack</td><td>$25,000/mo</td><td>Year-round, 10 domes</td><td>3,000&ndash;5,000+ posts/mo</td></tr>
-        <tr class="row-highlight"><td>FreeLife &mdash; Max Pack</td><td>$42,750/mo</td><td>Year-round, 19 domes</td><td>5,700&ndash;9,500+ posts/mo</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-<!-- ============================================ -->
-<!-- YOUR BUDGET, COMPARED -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <span class="eyebrow">Your Budget, Compared</span>
-    <h2 class="headline">Same spend. <em>Completely different results.</em></h2>
-    <p class="body-text" style="margin-bottom: 2rem;">Whatever you're spending on marketing right now, here's what FreeLife delivers at the same price.</p>
-
-    <div class="vs-table">
-      <div class="vs-header">
-        <div>Budget</div>
-        <div>What you get now</div>
-        <div>What FreeLife gives you</div>
-      </div>
-
-      <div class="vs-row">
-        <div class="vs-row__budget">$3K/mo<small>$36K/yr</small></div>
-        <div class="vs-row__old">6&ndash;20 sponsored posts from nano creators that disappear in 24 hours. A Vegas billboard costs 3&ndash;15&times; more with zero engagement.</div>
-        <div class="vs-row__new"><strong>1 dome, 1 creator, 300&ndash;500+ branded content pieces/month across all platforms, 365 days.</strong> Your brand is lived in, not posted once.</div>
-      </div>
-
-      <div class="vs-row">
-        <div class="vs-row__budget">$13.5K/mo<small>$162K/yr</small></div>
-        <div class="vs-row__old">A mid-tier social media agency producing 20&ndash;30 posts/month from a brand account with 2% organic reach.</div>
-        <div class="vs-row__new"><strong>5 domes, 5 creators, 1,500&ndash;2,500+ pieces of real content/month</strong> from real people with 3&ndash;10% engagement.</div>
-      </div>
-
-      <div class="vs-row">
-        <div class="vs-row__budget">$25K/mo<small>$300K/yr</small></div>
-        <div class="vs-row__old">A premium agency retainer. Or a single micro-influencer on a 12-month contract producing 4&ndash;8 posts/month.</div>
-        <div class="vs-row__new"><strong>10 domes, 10 creators, 3,000&ndash;5,000+ branded content pieces/month.</strong> 10 different voices, audiences, and niches.</div>
-      </div>
-
-      <div class="vs-row">
-        <div class="vs-row__budget">$42.7K/mo<small>$513K/yr</small></div>
-        <div class="vs-row__old">A brand pop-up that lasts 3&ndash;5 days and produces no recurring content. Or a traditional creator house (5&ndash;20 creators, dissolved in 18 months).</div>
-        <div class="vs-row__new"><strong>19 domes, 19 creators, 5,700&ndash;9,500+ content pieces/month across all platforms, year-round.</strong> The maximum pack &mdash; 19 different voices, audiences, and niches, 365 days.</div>
-      </div>
-    </div>
-
-    <div class="stat-row" style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 2rem;">
-      <div class="stat-row__item">
-        <div class="stat-row__num--green stat-row__num">$4.50&ndash;$7.50</div>
-        <div class="stat-row__label">Cost per content piece at Max Pack rate. Market rate: $150&ndash;$310. That's 20&ndash;69&times; less.</div>
-      </div>
-      <div class="stat-row__item">
-        <div class="stat-row__num--warm stat-row__num">3&ndash;10%</div>
-        <div class="stat-row__label">Engagement rate. 3&times; higher than macro influencers. Higher engagement = higher conversion.</div>
-      </div>
-    </div>
-
-    <p class="source">Sources: Influencer Marketing Hub (2026) &bull; UGC rates (Billo, Superscale, 2025) &bull; Aspire (experiential marketing, 2024)</p>
-  </div>
-</div>
-
-
-<!-- ============================================ -->
-<!-- DELIVERABLES -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <div class="split">
-      <div>
-        <span class="eyebrow">Sponsor Deliverables</span>
-        <h2 class="headline">What you receive <em>every month.</em></h2>
-        <p class="body-text">Every sponsorship includes reporting, content access, and measurable results. You'll never wonder if it's working.</p>
-
-        <ul class="stack-list" style="margin-top: 2rem;">
-          <li>
-            <div class="stack-list__num">01</div>
-            <div>
-              <div class="stack-list__title">Performance Dashboard</div>
-              <div class="stack-list__desc">Impressions, engagement rate, content volume, audience growth, and top-performing posts &mdash; delivered monthly per dome.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num">02</div>
-            <div>
-              <div class="stack-list__title">Content Library + Usage Rights</div>
-              <div class="stack-list__desc">All branded content produced by your creators, delivered monthly. Use it on your channels, ads, website, and retail displays.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num">03</div>
-            <div>
-              <div class="stack-list__title">Always-On Brand Integration</div>
-              <div class="stack-list__desc">Your products installed and visible in every piece of content. Not a one-time placement &mdash; a permanent fixture in the creator's home.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num">04</div>
-            <div>
-              <div class="stack-list__title">Dedicated Account Manager</div>
-              <div class="stack-list__desc">Monthly performance reviews. If a creator underperforms, we work with them or reassign your sponsorship to a new dome.</div>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <table class="data-table" style="margin-top: 4rem;">
-          <thead>
-            <tr><th>What We Track</th><th>How</th><th>Freq.</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="white">Content volume</td><td>Creator content log</td><td>Weekly</td></tr>
-            <tr><td class="white">Impressions &amp; reach</td><td>Platform analytics</td><td>Monthly</td></tr>
-            <tr><td class="white">Engagement rate</td><td>Likes, comments, shares, saves</td><td>Monthly</td></tr>
-            <tr><td class="white">Audience demos</td><td>Platform insights</td><td>Quarterly</td></tr>
-            <tr><td class="white">Brand mentions</td><td>Tags, hashtags, @mentions</td><td>Monthly</td></tr>
-            <tr><td class="white">Content value</td><td>Market rate vs. your cost</td><td>Monthly</td></tr>
-          </tbody>
-        </table>
-
-        <div class="banner banner--teal" style="margin-top: 1.5rem;">
-          <strong>No black box.</strong> You see exactly how many pieces of content featured your brand, how many people saw it, and how they engaged. Full transparency, every month.
+      <div class="callout callout--success reveal" style="margin-top: 2.5rem;">
+        <div class="callout__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          128,200 Units Signed Globally
+        </div>
+        <div class="callout__text">
+          As of 2026, Cleado has signed contracts for 128,200 homes representing $15.694 billion in projected lifetime revenue. Expansion spans Africa, the Caribbean (Jamaica &mdash; 10,200 homes proven), Europe, and North America. During Hurricane Melissa (2025), a Cat-5 direct hit on Jamaica, Cleado domes remained fully operational while traditional structures suffered 70&ndash;90% roof damage.
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 3: RECOMMENDED APPROACH
+       ========================================== -->
+  <section class="section" id="payment-models">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Ownership Model</span>
+        <h2 class="section-title">Paid-upfront<br><span class="housing-accent">turnkey.</span></h2>
+        <p class="section-subtitle">
+          Creator Village purchases Cleado domes outright through grants and investors. Residents receive full ownership of their home and integrated solar system from day one &mdash; no subscriptions, no ongoing payments, no strings attached.
+        </p>
+      </div>
+
+      <div class="recommend">
+        <div class="recommend__card recommend__card--primary reveal">
+          <div class="recommend__tag">Creator Village Model</div>
+          <div class="recommend__title">Paid-Upfront Turnkey</div>
+          <div class="recommend__text">
+            Creator Village purchases each Cleado dome outright through grants, investors, and creator community revenue. Residents receive full ownership of their home and solar system immediately &mdash; zero ongoing housing or energy costs, ever.
+          </div>
+          <ul class="recommend__list">
+            <li><span class="check">&#10003;</span> US$57,000 per 9m dome (negotiated bulk pricing)</li>
+            <li><span class="check">&#10003;</span> Immediate full ownership of home + solar + battery</li>
+            <li><span class="check">&#10003;</span> 12-hour on-site assembly</li>
+            <li><span class="check">&#10003;</span> $0 monthly housing costs for residents</li>
+            <li><span class="check">&#10003;</span> $0 energy bills &mdash; solar is fully owned</li>
+            <li><span class="check">&#10003;</span> No subscriptions, no lease payments, no strings</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="data-table-wrapper reveal" style="margin-top: 3rem;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Creator Village (Cleado Paid-Upfront)</th>
+              <th>Traditional Housing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cost to Resident</td>
+              <td class="highlight-row" style="color: var(--clr-housing); font-weight: 700;">$0</td>
+              <td>$1,500&ndash;$3,000/month</td>
+            </tr>
+            <tr>
+              <td>Energy Bills</td>
+              <td class="highlight-row" style="color: var(--clr-housing); font-weight: 700;">$0 (solar owned)</td>
+              <td>$150&ndash;$400/month</td>
+            </tr>
+            <tr>
+              <td>Build Time</td>
+              <td>12 hours on-site</td>
+              <td>6&ndash;12 months</td>
+            </tr>
+            <tr>
+              <td>Home Ownership</td>
+              <td>Full immediate</td>
+              <td>30-year mortgage</td>
+            </tr>
+            <tr>
+              <td>Storm Resistance</td>
+              <td>Cat-5 hurricane proof</td>
+              <td>Vulnerable</td>
+            </tr>
+            <tr>
+              <td>25-Year Total Cost</td>
+              <td>$55K&ndash;$75K (one-time)</td>
+              <td>$450K&ndash;$900K+</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout--info reveal" style="margin-top: 2rem;">
+        <div class="callout__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          Creator Village Strategy
+        </div>
+        <div class="callout__text">
+          Creator Village purchases all Cleado domes outright using <strong style="color: var(--clr-housing);">grants, impact investors, and creator community revenue</strong>. Every resident gets full ownership of their home and solar system from day one. No rent. No mortgage. No energy bills. The community's creator economy generates the revenue to fund each build &mdash; making Creator Village self-sustaining and scalable.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 4: COMMUNITY LAND TRUST
+       ========================================== -->
+  <section class="section" id="clt">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Ownership Model</span>
+        <h2 class="section-title">Community Land Trust<br><span class="housing-accent">model.</span></h2>
+        <p class="section-subtitle">
+          The CLT separates land ownership from housing use, ensuring permanent affordability. Land is held in trust; residents get lifetime security without the burden of a mortgage.
+        </p>
+      </div>
+
+      <div class="clt-flow">
+        <div class="clt-step reveal">
+          <div class="clt-step__number">1</div>
+          <div class="clt-step__title">Nonprofit CLT Acquires Land</div>
+          <div class="clt-step__desc">Creator Village CLT purchases or receives donated land, removing it permanently from the speculative market.</div>
+        </div>
+        <div class="clt-step reveal reveal-delay-1">
+          <div class="clt-step__number">2</div>
+          <div class="clt-step__title">CLT Retains Permanent Ownership</div>
+          <div class="clt-step__desc">The nonprofit holds title to the land forever. It can never be sold to private developers or speculators.</div>
+        </div>
+        <div class="clt-step reveal reveal-delay-2">
+          <div class="clt-step__number">3</div>
+          <div class="clt-step__title">99-Year Ground Lease Issued</div>
+          <div class="clt-step__desc">Residents receive a <span class="clt-step__highlight">renewable, inheritable</span> ground lease providing full security of tenure.</div>
+        </div>
+        <div class="clt-step reveal">
+          <div class="clt-step__number">4</div>
+          <div class="clt-step__title">$0 Monthly Ground Lease Fee</div>
+          <div class="clt-step__desc">Creator Village model charges <span class="clt-step__highlight">$0/month</span>. Typical CLTs charge $10-$75/month. Creator Village eliminates even that.</div>
+        </div>
+        <div class="clt-step reveal reveal-delay-1">
+          <div class="clt-step__number">5</div>
+          <div class="clt-step__title">Resale Restrictions</div>
+          <div class="clt-step__desc">If a resident sells improvements, resale formula maintains affordability for the next resident permanently.</div>
+        </div>
+        <div class="clt-step reveal reveal-delay-2">
+          <div class="clt-step__number">6</div>
+          <div class="clt-step__title">Unit Returns to Trust</div>
+          <div class="clt-step__desc">When a resident leaves, the unit returns to the CLT to house the next qualifying household.</div>
+        </div>
+      </div>
+
+      <h3 style="font-family: var(--ff-serif); font-size: 1.4rem; color: var(--clr-white); margin-top: 4rem; margin-bottom: 0.5rem;" class="reveal">Real CLT Examples</h3>
+      <p style="font-size: 0.92rem; color: var(--clr-text-muted); margin-bottom: 2rem;" class="reveal">Proven models operating successfully across the United States.</p>
+
+      <div class="examples-grid">
+        <div class="example-card reveal">
+          <div class="example-card__name">Champlain Housing Trust</div>
+          <div class="example-card__location">Burlington, VT</div>
+          <div class="example-card__detail">The largest CLT in the United States, operating since 1984. Demonstrates the long-term viability and scalability of the community land trust model.</div>
+          <div class="example-card__stat">
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">565</div>
+              <div class="example-card__stat-label">CLT Homes</div>
+            </div>
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">2,100</div>
+              <div class="example-card__stat-label">Rental Units</div>
+            </div>
+          </div>
+        </div>
+        <div class="example-card reveal reveal-delay-1">
+          <div class="example-card__name">Dudley Neighbors Inc</div>
+          <div class="example-card__location">Boston, MA</div>
+          <div class="example-card__detail">Community-driven CLT formed from grassroots organizing. Demonstrated that residents themselves can govern land trusts and maintain affordable housing in high-cost urban areas.</div>
+          <div class="example-card__stat">
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">225</div>
+              <div class="example-card__stat-label">Housing Units</div>
+            </div>
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">30</div>
+              <div class="example-card__stat-label">Acres in Trust</div>
+            </div>
+          </div>
+        </div>
+        <div class="example-card reveal">
+          <div class="example-card__name">Fort Worth CLT</div>
+          <div class="example-card__location">Carroll Park, TX</div>
+          <div class="example-card__detail">Newer CLT demonstrating the model in the Sun Belt. Homes priced from $135,000, serving families who would otherwise be priced out of homeownership.</div>
+          <div class="example-card__stat">
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">200</div>
+              <div class="example-card__stat-label">Homes Planned</div>
+            </div>
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">$135K</div>
+              <div class="example-card__stat-label">Starting Price</div>
+            </div>
+          </div>
+        </div>
+        <div class="example-card reveal reveal-delay-1">
+          <div class="example-card__name">Interboro CLT</div>
+          <div class="example-card__location">New York City, NY</div>
+          <div class="example-card__detail">Uses 99-year renewable ground leases in one of the most expensive real estate markets in the world. Proves the model works even in extreme-cost environments.</div>
+          <div class="example-card__stat">
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">99yr</div>
+              <div class="example-card__stat-label">Renewable Lease</div>
+            </div>
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">NYC</div>
+              <div class="example-card__stat-label">High-Cost Market</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
 
 
-<!-- ============================================ -->
-<!-- BRAND SAFETY & CONTENT GUIDELINES -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <span class="eyebrow">Brand Protection</span>
-    <h2 class="headline">Your brand is <em>protected.</em></h2>
-    <p class="body-text" style="margin-bottom: 2rem;">Every creator in the community agrees to content guidelines before move-in. If standards aren't met, we act &mdash; and you have the final say on your dome.</p>
+  <!-- ==========================================
+       SECTION 6: WATER & WASTE SYSTEMS
+       ========================================== -->
+  <section class="section" id="water-waste">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Infrastructure</span>
+        <h2 class="section-title">Water & waste<br><span class="housing-accent">systems.</span></h2>
+        <p class="section-subtitle">
+          Decentralized water and waste infrastructure reduces dependence on municipal systems and dramatically lowers long-term costs.
+        </p>
+      </div>
 
-    <div class="split">
-      <div>
-        <ul class="stack-list">
-          <li>
-            <div class="stack-list__num">01</div>
-            <div>
-              <div class="stack-list__title">Content Approval</div>
-              <div class="stack-list__desc">Annual sponsors get content approval rights. You review branded content before it goes live and flag anything that doesn't meet your standards.</div>
+      <div class="systems-grid">
+        <div class="system-card reveal">
+          <div class="system-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0L12 2.69z"/></svg></div>
+          <div class="system-card__title">Rainwater Harvesting</div>
+          <div class="system-card__item">
+            <span class="system-card__item-label">Simple system</span>
+            <span class="system-card__item-value">$1,000-$3,500</span>
+          </div>
+          <div class="system-card__item">
+            <span class="system-card__item-label">Underground cistern</span>
+            <span class="system-card__item-value">$6,500-$24,000</span>
+          </div>
+          <div class="system-card__item">
+            <span class="system-card__item-label">Annual maintenance</span>
+            <span class="system-card__item-value">~$740/year</span>
+          </div>
+        </div>
+
+        <div class="system-card reveal reveal-delay-1">
+          <div class="system-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></div>
+          <div class="system-card__title">Greywater Recycling</div>
+          <div class="system-card__item">
+            <span class="system-card__item-label">Laundry-to-yard</span>
+            <span class="system-card__item-value">$600</span>
+          </div>
+          <div class="system-card__item">
+            <span class="system-card__item-label">Full-house system</span>
+            <span class="system-card__item-value">$2,200-$5,500</span>
+          </div>
+          <div class="system-card__item">
+            <span class="system-card__item-label">Water bill savings</span>
+            <span class="system-card__item-value">30-50%</span>
+          </div>
+          <div class="system-card__savings">
+            <div class="system-card__savings-value">3-7 year payback</div>
+            <div class="system-card__savings-label">Return on investment</div>
+          </div>
+        </div>
+
+        <div class="system-card reveal reveal-delay-2">
+          <div class="system-card__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V8"/><path d="M5 12s2-4 7-4 7 4 7 4"/><path d="M7 8s1.5-3 5-3 5 3 5 3"/><path d="M9 5s1-2 3-2 3 2 3 2"/></svg></div>
+          <div class="system-card__title">Composting Toilets vs Septic</div>
+          <div class="system-card__item">
+            <span class="system-card__item-label">Composting (self-contained)</span>
+            <span class="system-card__item-value">$800-$2,200</span>
+          </div>
+          <div class="system-card__item">
+            <span class="system-card__item-label">Composting (full system)</span>
+            <span class="system-card__item-value">$2,100-$6,500</span>
+          </div>
+          <div class="system-card__item">
+            <span class="system-card__item-label">Conventional septic</span>
+            <span class="system-card__item-value">$3,500-$12,465</span>
+          </div>
+          <div class="system-card__item">
+            <span class="system-card__item-label">Engineered septic</span>
+            <span class="system-card__item-value">$15,000-$50,000+</span>
+          </div>
+          <div class="system-card__savings">
+            <div class="system-card__savings-value">$1,400-$43,500+ savings</div>
+            <div class="system-card__savings-label">Per household vs engineered septic</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 7: PASSIVE HOUSE
+       ========================================== -->
+  <section class="section" id="solar-energy">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Built-In Energy</span>
+        <h2 class="section-title">Integrated solar &<br><span class="housing-accent">off-grid power.</span></h2>
+        <p class="section-subtitle">
+          Every Cleado dome comes with built-in thin-film solar PV and battery storage &mdash; eliminating the need for a separate energy system entirely. Housing and energy solved in one package.
+        </p>
+      </div>
+
+      <div class="passive-grid">
+        <div class="passive-card reveal">
+          <div class="passive-card__value">10 m&sup2;</div>
+          <div class="passive-card__label">Thin-Film Solar PV Per Dome</div>
+          <div class="passive-card__sub">Integrated directly into the geodesic structure</div>
+        </div>
+        <div class="passive-card reveal reveal-delay-1">
+          <div class="passive-card__value">~5,000</div>
+          <div class="passive-card__label">kWh Generated Per Year</div>
+          <div class="passive-card__sub">Enough to power an average household</div>
+        </div>
+        <div class="passive-card reveal">
+          <div class="passive-card__value">100%</div>
+          <div class="passive-card__label">Off-Grid Capable</div>
+          <div class="passive-card__sub">Battery storage included for full autonomy</div>
+        </div>
+        <div class="passive-card reveal reveal-delay-1">
+          <div class="passive-card__value">$0</div>
+          <div class="passive-card__label">Energy Bills for Residents</div>
+          <div class="passive-card__sub">Solar fully owned &mdash; free energy forever</div>
+        </div>
+      </div>
+
+      <div class="callout callout--success reveal" style="margin-top: 2.5rem;">
+        <div class="callout__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Housing + Energy = One Solution
+        </div>
+        <div class="callout__text">
+          Traditional approaches require separate budgets and contractors for housing and solar. Cleado eliminates this by integrating thin-film solar directly into the dome structure. For Creator Village, this means housing and energy are solved simultaneously &mdash; with a single partner, a single deployment, and a single 12-hour install.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 8: FEDERAL & STATE PROGRAMS
+       ========================================== -->
+  <section class="section" id="programs">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Funding</span>
+        <h2 class="section-title">Federal & state<br><span class="housing-accent">housing programs.</span></h2>
+        <p class="section-subtitle">
+          Billions in federal funding exists specifically for affordable housing construction. Creator Village is designed to qualify for multiple overlapping programs.
+        </p>
+      </div>
+
+      <div class="programs-grid">
+        <div class="program-card reveal">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div>
+            <div class="program-card__name">HUD CDBG</div>
+            <div class="program-card__amount">~$3.3B (FY2025)</div>
+            <div class="program-card__desc">Community Development Block Grants. Can fund new affordable construction, infrastructure, and community facilities.</div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div>
+            <div class="program-card__name">HOME Investment</div>
+            <div class="program-card__amount">$1.3B (FY2025)</div>
+            <div class="program-card__desc">Targeted specifically to low-income housing development. Flexible funding for construction, rehabilitation, and rental assistance.</div>
+          </div>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+          <div>
+            <div class="program-card__name">LIHTC 9% Credit</div>
+            <div class="program-card__amount">Up to 70% subsidy</div>
+            <div class="program-card__desc">Low-Income Housing Tax Credit for new construction. The most powerful federal affordable housing tool. Competitive allocation.</div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div>
+            <div class="program-card__name">LIHTC 4% Credit</div>
+            <div class="program-card__amount">Up to 30% subsidy</div>
+            <div class="program-card__desc">Non-competitive LIHTC allocation paired with tax-exempt bonds. Easier to obtain than the 9% credit.</div>
+          </div>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div>
+            <div class="program-card__name">LIHTC 2026 Expansion</div>
+            <div class="program-card__amount">Permanent 12% increase</div>
+            <div class="program-card__desc">Starting 2026, permanent 12% increase in state allocation of LIHTC credits. More housing credits available than ever before.</div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22V8"/><path d="M5 12s2-4 7-4 7 4 7 4"/><path d="M9 5s1-2 3-2 3 2 3 2"/></svg></div>
+          <div>
+            <div class="program-card__name">USDA Section 502</div>
+            <div class="program-card__amount">Direct loans, low/very-low income</div>
+            <div class="program-card__desc">Rural housing direct loans for low and very-low income households. Below-market interest rates, up to 33-year terms.</div>
+          </div>
+        </div>
+        <div class="program-card reveal" style="grid-column: 1 / -1; max-width: 50%;">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/></svg></div>
+          <div>
+            <div class="program-card__name">USDA Section 515</div>
+            <div class="program-card__amount">Rural rental housing</div>
+            <div class="program-card__desc">Low-interest loans for constructing or improving rural rental housing for low-income, elderly, or disabled residents.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 9: REAL EXAMPLES AT SCALE
+       ========================================== -->
+  <section class="section" id="examples">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Proof Points</span>
+        <h2 class="section-title">Real examples<br><span class="housing-accent">at scale.</span></h2>
+        <p class="section-subtitle">
+          These are not concepts or proposals. These are real communities, with real residents, built and operating today.
+        </p>
+      </div>
+
+      <div class="examples-grid">
+        <div class="example-card reveal">
+          <div class="example-card__name">Cleado &mdash; Jamaica</div>
+          <div class="example-card__location">Caribbean (Active Deployment)</div>
+          <div class="example-card__detail">10,200 homes signed and deploying. Survived Hurricane Melissa (2025, Cat-5) with zero structural failures while traditional homes suffered 70&ndash;90% roof damage. Off-grid solar maintained power during months-long grid outages.</div>
+          <div class="example-card__stat">
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">10,200</div>
+              <div class="example-card__stat-label">Homes Signed</div>
             </div>
-          </li>
-          <li>
-            <div class="stack-list__num">02</div>
-            <div>
-              <div class="stack-list__title">Community Code of Conduct</div>
-              <div class="stack-list__desc">Every creator signs a code of conduct covering content standards, behavior expectations, and brand respect. Violations are handled swiftly &mdash; not ignored.</div>
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">Cat-5</div>
+              <div class="example-card__stat-label">Hurricane Proven</div>
             </div>
-          </li>
-          <li>
-            <div class="stack-list__num">03</div>
-            <div>
-              <div class="stack-list__title">Creator Vetting</div>
-              <div class="stack-list__desc">Creators are vetted before acceptance. Content history, audience authenticity, and engagement quality are all reviewed. No fake followers, no controversy track records.</div>
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">100%</div>
+              <div class="example-card__stat-label">Survival Rate</div>
             </div>
-          </li>
+          </div>
+        </div>
+        <div class="example-card reveal reveal-delay-1">
+          <div class="example-card__name">Cleado &mdash; St. Lucia</div>
+          <div class="example-card__location">Caribbean (Proposed)</div>
+          <div class="example-card__detail">5,200 homes proposed. 52 MW solar capacity, 625 million kWh clean energy, US$21.875M government revenue over 25 years. Groundbreaking Q2 2026.</div>
+          <div class="example-card__stat">
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">5,200</div>
+              <div class="example-card__stat-label">Homes Proposed</div>
+            </div>
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">52 MW</div>
+              <div class="example-card__stat-label">Solar Capacity</div>
+            </div>
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">$0</div>
+              <div class="example-card__stat-label">Cost to Gov't</div>
+            </div>
+          </div>
+        </div>
+        <div class="example-card reveal">
+          <div class="example-card__name">Cleado Global Pipeline</div>
+          <div class="example-card__location">Africa, Caribbean, Europe, North America</div>
+          <div class="example-card__detail">128,200 total homes under signed contracts across multiple continents. $15.694 billion in projected lifetime revenue. Capable of generating up to 500,000 direct and indirect jobs.</div>
+          <div class="example-card__stat">
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">128.2K</div>
+              <div class="example-card__stat-label">Units Signed</div>
+            </div>
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">$15.7B</div>
+              <div class="example-card__stat-label">Lifetime Revenue</div>
+            </div>
+          </div>
+        </div>
+        <div class="example-card reveal reveal-delay-1">
+          <div class="example-card__name">Cleado Community Buildings</div>
+          <div class="example-card__location">Schools &amp; Medical Clinics</div>
+          <div class="example-card__detail">Beyond housing, Cleado offers dome floor plans for community infrastructure. School domes fit 58&ndash;72 students across 3 classrooms. Medical clinic domes include observation wards, consultation rooms, pharmacy, and lab facilities.</div>
+          <div class="example-card__stat">
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">385 m&sup2;</div>
+              <div class="example-card__stat-label">Dome A (3 floors)</div>
+            </div>
+            <div class="example-card__stat-item">
+              <div class="example-card__stat-value">57 m&sup2;</div>
+              <div class="example-card__stat-label">Dome B (2 floors)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 10: FREELIFE HOUSING BUDGET
+       ========================================== -->
+  <section class="section" id="budget">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Financials</span>
+        <h2 class="section-title">Creator Village housing<br><span class="housing-accent">budget.</span></h2>
+        <p class="section-subtitle">
+          Per-unit and community-wide cost projections using Cleado geodesic domes with integrated solar. Creator Village purchases all domes outright &mdash; residents pay nothing.
+        </p>
+      </div>
+
+      <h3 style="font-family: var(--ff-serif); font-size: 1.25rem; color: var(--clr-white); margin-top: 3rem; margin-bottom: 0.5rem;" class="reveal">Per Unit Cost Breakdown</h3>
+
+      <div class="data-table-wrapper reveal">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Cost Per Unit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cleado 9m dome (GFRP panels, integrated solar PV)</td>
+              <td>$57,000</td>
+            </tr>
+            <tr>
+              <td>Site prep &amp; platform</td>
+              <td>$2,000&ndash;$5,000</td>
+            </tr>
+            <tr>
+              <td>Shared LFP battery system (per unit share)</td>
+              <td>Included</td>
+            </tr>
+            <tr>
+              <td>Rainwater harvesting system</td>
+              <td>$3,000&ndash;$5,000</td>
+            </tr>
+            <tr>
+              <td>Greywater recycling</td>
+              <td>$2,000&ndash;$4,000</td>
+            </tr>
+            <tr>
+              <td>Septic / composting toilet</td>
+              <td>$2,000&ndash;$6,000</td>
+            </tr>
+            <tr class="total-row">
+              <td>Total Per Unit (Creator Village cost)</td>
+              <td>$66,000&ndash;$77,000</td>
+            </tr>
+            <tr class="highlight-row">
+              <td>Ongoing cost to resident</td>
+              <td style="color: var(--clr-housing); font-weight: 700;">$0 &mdash; fully owned home + solar</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-family: var(--ff-serif); font-size: 1.25rem; color: var(--clr-white); margin-top: 3rem; margin-bottom: 0.5rem;" class="reveal">Negotiated Pricing &mdash; Cleado Agreement</h3>
+
+      <div class="data-table-wrapper reveal">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Dome Size</th>
+              <th>Units</th>
+              <th>Price/Unit</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9-meter dome (residential)</td>
+              <td>97</td>
+              <td style="color: var(--clr-housing); font-weight: 600;">$57,000</td>
+              <td>$5,529,000</td>
+            </tr>
+            <tr>
+              <td>14-meter dome (community center)</td>
+              <td>3</td>
+              <td style="color: var(--clr-housing); font-weight: 600;">$180,000</td>
+              <td>$540,000</td>
+            </tr>
+            <tr class="total-row">
+              <td>Total</td>
+              <td>100</td>
+              <td>&mdash;</td>
+              <td style="color: var(--clr-housing); font-weight: 800;">$6,069,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-family: var(--ff-serif); font-size: 1.25rem; color: var(--clr-white); margin-top: 4rem; margin-bottom: 1.5rem;" class="reveal">Community Total (100 Units)</h3>
+
+      <div class="budget-summary">
+        <div class="budget-card reveal">
+          <div class="budget-card__label">Land</div>
+          <div class="budget-card__value">$300K&ndash;$750K</div>
+          <div class="budget-card__note">15 acres near Las Vegas ($20K&ndash;$50K/acre)</div>
+        </div>
+        <div class="budget-card reveal reveal-delay-1">
+          <div class="budget-card__label">Housing (Paid-Upfront)</div>
+          <div class="budget-card__value">$6.069M</div>
+          <div class="budget-card__note">97 residential + 3 community domes</div>
+        </div>
+        <div class="budget-card reveal reveal-delay-1">
+          <div class="budget-card__label">Water &amp; Site Infrastructure</div>
+          <div class="budget-card__value">$900K&ndash;$2M</div>
+          <div class="budget-card__note">Rainwater, greywater, septic, site prep &times; 100</div>
+        </div>
+      </div>
+
+      <div class="budget-total reveal" style="margin-top: 1.5rem;">
+        <div>
+          <div class="budget-total__label">Total Community Cost (100 units)</div>
+          <div class="budget-total__sublabel">Creator Village purchases all domes outright via grants, investors &amp; creator revenue</div>
+        </div>
+        <div>
+          <div class="budget-total__value">$7.3M&ndash;$8.8M</div>
+          <div class="budget-total__subvalue">Full ownership of housing + solar for all residents</div>
+        </div>
+      </div>
+
+      <div class="callout callout--info reveal" style="margin-top: 2rem;">
+        <div class="callout__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          Cost Comparison: Creator Village vs Traditional
+        </div>
+        <div class="callout__text">
+          A traditional 100-home community costs <strong style="color: var(--clr-housing);">$25M&ndash;$40M+</strong> and takes 2&ndash;3 years to build. Creator Village's 100 Cleado domes cost <strong style="color: var(--clr-housing);">$7.3M&ndash;$8.8M</strong> and can be deployed in weeks. Residents start at $1,000/mo with the goal of reaching $0 as brand sponsorships scale.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION: CREATOR COMMUNITY MODEL
+       ========================================== -->
+  <section class="section" id="creator-community">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Revenue Engine</span>
+        <h2 class="section-title">House <span class="housing-accent">sponsorships.</span></h2>
+        <p class="section-subtitle">
+          Every home in Creator Village is tied to a creator and their brand partnerships. Brands sponsor individual houses &mdash; paying for the creator&rsquo;s living costs in exchange for authentic content from the community. As sponsorship revenue grows, residents&rsquo; $1,000/mo cost drops to zero. Three homes serve as main community centers for shared studios, events, and collaboration spaces.
+        </p>
+      </div>
+
+      <!-- How the model works -->
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step__number">1</div>
+          <div class="step__title">Creators Move In</div>
+          <div class="step__desc">100 creators across all tiers &mdash; from nano to established &mdash; move into Creator Village at $1,000/mo. Three additional homes are designated as community centers: a shared production studio, an event space, and a collaboration hub.</div>
+        </div>
+        <div class="step reveal reveal-delay-1">
+          <div class="step__number">2</div>
+          <div class="step__title">Brand Sponsorships</div>
+          <div class="step__desc">Creator Village negotiates house sponsorships with brands. Each creator&rsquo;s home becomes a branded content hub &mdash; brands get access to authentic creators living in a visually stunning community. Sponsorship value scales with follower count.</div>
+        </div>
+        <div class="step reveal reveal-delay-2">
+          <div class="step__number">3</div>
+          <div class="step__title">Content &amp; Campaigns</div>
+          <div class="step__desc">Creators produce sponsored content, product integrations, and brand campaigns directly from their homes. The community itself is the set &mdash; every piece of content showcases the Creator Village lifestyle.</div>
+        </div>
+        <div class="step reveal reveal-delay-3">
+          <div class="step__number">4</div>
+          <div class="step__title">Cost Drops to Zero</div>
+          <div class="step__desc">As house sponsorship revenue exceeds the $1,000/mo baseline, residents&rsquo; costs are eliminated. The goal: every creator living completely free, funded entirely by the brands that sponsor their house.</div>
+        </div>
+        <div class="step reveal">
+          <div class="step__number">5</div>
+          <div class="step__title">Scale &amp; Replicate</div>
+          <div class="step__desc">Surplus revenue funds new Creator Village communities. The model is self-replicating &mdash; each community proves the sponsorship economics and attracts the next wave of brands and creators.</div>
+        </div>
+      </div>
+
+      <!-- House Sponsorship Tiers -->
+      <h3 style="font-family: var(--ff-serif); font-size: 1.4rem; color: var(--clr-white); margin-top: 4rem; margin-bottom: 0.5rem;" class="reveal">House Sponsorship Tiers</h3>
+      <p style="font-size: 0.92rem; color: var(--clr-text-muted); margin-bottom: 2rem;" class="reveal">Each home is paired with a creator tier. Pricing scales with audience size. A custom installation fee applies based on how much branding and personalization the sponsor wants on the home.</p>
+
+      <div class="data-table-wrapper reveal">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Followers</th>
+              <th>Per House</th>
+              <th># of Houses</th>
+              <th>Tier Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nano Creators</td>
+              <td>10K&ndash;50K</td>
+              <td>$12,000</td>
+              <td>40</td>
+              <td>$480,000</td>
+            </tr>
+            <tr>
+              <td>Micro Influencers</td>
+              <td>50K&ndash;100K</td>
+              <td>$24,000</td>
+              <td>37</td>
+              <td>$888,000</td>
+            </tr>
+            <tr>
+              <td>Mid-Tier Creators</td>
+              <td>100K&ndash;500K</td>
+              <td>$50,000</td>
+              <td>20</td>
+              <td>$1,000,000</td>
+            </tr>
+            <tr>
+              <td>Community Centers</td>
+              <td>&mdash;</td>
+              <td>$100,000</td>
+              <td>3</td>
+              <td>$300,000</td>
+            </tr>
+            <tr class="total-row">
+              <td>Total</td>
+              <td>&mdash;</td>
+              <td>&mdash;</td>
+              <td>100</td>
+              <td>$2,668,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top: 1.25rem; padding: 1rem 1.25rem; background: var(--clr-bg-card); border: 1px solid var(--clr-border); border-left: 3px solid var(--clr-housing); border-radius: 8px;" class="reveal">
+        <div style="font-weight: 700; font-size: 0.85rem; color: var(--clr-housing); margin-bottom: 0.25rem;">+ Custom Installation Fee</div>
+        <div style="font-size: 0.8rem; color: var(--clr-text-muted); line-height: 1.6;">Additional fee based on the level of branding customization &mdash; exterior wraps, interior design, signage, smart home integrations, and branded content setups. Priced per sponsor based on scope.</div>
+      </div>
+
+      <!-- Path to Free Living -->
+      <h3 style="font-family: var(--ff-serif); font-size: 1.25rem; color: var(--clr-white); margin-top: 4rem; margin-bottom: 1.5rem;" class="reveal">Path to Free Living</h3>
+
+      <div class="budget-summary">
+        <div class="budget-card reveal">
+          <div class="budget-card__label">Starting Cost</div>
+          <div class="budget-card__value">$1,000/mo</div>
+          <div class="budget-card__note">Per house, all residents</div>
+        </div>
+        <div class="budget-card reveal reveal-delay-1">
+          <div class="budget-card__label">Sponsorship Revenue</div>
+          <div class="budget-card__value">~$2.2K/mo</div>
+          <div class="budget-card__note">Average per house across all tiers</div>
+        </div>
+        <div class="budget-card reveal reveal-delay-2">
+          <div class="budget-card__label">The Goal</div>
+          <div class="budget-card__value">$0/mo</div>
+          <div class="budget-card__note">Once sponsorships exceed costs</div>
+        </div>
+      </div>
+
+      <!-- What the community share covers -->
+      <h3 style="font-family: var(--ff-serif); font-size: 1.25rem; color: var(--clr-white); margin-top: 4rem; margin-bottom: 1.5rem;" class="reveal">What the Community Share Funds</h3>
+
+      <div class="data-table-wrapper reveal">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Expense Category</th>
+              <th>Est. Annual Cost</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Community management &amp; staffing</td>
+              <td>$300K&ndash;$325K</td>
+              <td>Talent managers, brand liaisons, admin</td>
+            </tr>
+            <tr>
+              <td>Internet infrastructure &amp; Starlink</td>
+              <td>$90K&ndash;$100K</td>
+              <td>High-speed for content production</td>
+            </tr>
+            <tr>
+              <td>Content studio &amp; equipment</td>
+              <td>$70K&ndash;$85K</td>
+              <td>Shared production facilities</td>
+            </tr>
+            <tr>
+              <td>Maintenance &amp; repairs</td>
+              <td>$60K&ndash;$75K</td>
+              <td>Dome upkeep, water systems, roads</td>
+            </tr>
+            <tr>
+              <td>Insurance &amp; legal</td>
+              <td>$130K&ndash;$165K</td>
+              <td>Community liability, contracts</td>
+            </tr>
+            <tr class="total-row">
+              <td>Total Operating Costs</td>
+              <td>$650K&ndash;$750K</td>
+              <td>&mdash;</td>
+            </tr>
+            <tr class="highlight-row">
+              <td>Surplus for Expansion Fund</td>
+              <td>$1.9M&ndash;$2M</td>
+              <td>Funds new Creator Village communities</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Revenue streams breakdown -->
+      <h3 style="font-family: var(--ff-serif); font-size: 1.25rem; color: var(--clr-white); margin-top: 4rem; margin-bottom: 1.5rem;" class="reveal">Creator Revenue Streams</h3>
+
+      <div class="programs-grid">
+        <div class="program-card reveal">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+          <div>
+            <div class="program-card__name">Sponsored Content</div>
+            <div class="program-card__amount">$500&ndash;$25,000+ per post</div>
+            <div class="program-card__desc">Brand-sponsored posts, videos, reels, and stories across Instagram, TikTok, YouTube, and X. Community negotiates bulk deals for higher rates.</div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+          <div>
+            <div class="program-card__name">Affiliate Marketing</div>
+            <div class="program-card__amount">5&ndash;30% commission per sale</div>
+            <div class="program-card__desc">Product links, discount codes, and ambassador programs. 100 creators promoting the same product creates massive conversion volume for brands.</div>
+          </div>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <div>
+            <div class="program-card__name">Platform Revenue</div>
+            <div class="program-card__amount">AdSense, Creator Fund, Tips</div>
+            <div class="program-card__desc">YouTube ad revenue, TikTok Creator Fund, Twitch subs, Patreon memberships. Passive income that scales with audience growth.</div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/><circle cx="12" cy="15" r="2"/></svg></div>
+          <div>
+            <div class="program-card__name">Brand Residencies</div>
+            <div class="program-card__amount">$10K&ndash;$100K+ per campaign</div>
+            <div class="program-card__desc">Brands sponsor entire community campaigns &mdash; product launches, challenges, and immersive experiences filmed at the Creator Village village. The dome community itself is the set.</div>
+          </div>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2V3z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7V3z"/></svg></div>
+          <div>
+            <div class="program-card__name">Courses &amp; Coaching</div>
+            <div class="program-card__amount">$50&ndash;$500 per enrollment</div>
+            <div class="program-card__desc">Creators sell online courses, coaching programs, and digital products. Community provides production support and shared marketing.</div>
+          </div>
+        </div>
+        <div class="program-card reveal reveal-delay-1">
+          <div class="program-card__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+          <div>
+            <div class="program-card__name">UGC &amp; Freelance</div>
+            <div class="program-card__amount">$150&ndash;$5,000 per deliverable</div>
+            <div class="program-card__desc">User-generated content for brands who need authentic, high-quality creative. Community acts as a UGC production house at scale.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why this works callout -->
+      <div class="callout callout--info reveal" style="margin-top: 2.5rem;">
+        <div class="callout__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          Why This Model Works
+        </div>
+        <div class="callout__text">
+          Creators spend 50&ndash;70% of their income on housing, energy, and internet. Creator Village eliminates these three biggest costs, meaning creators keep far more of their earnings while producing more content. The 30% community share replaces costs they were already paying &mdash; and funds the entire community operation. For brands, a village of 100 creators living in visually stunning geodesic domes is an irresistible marketing opportunity that no individual influencer can offer.
+        </div>
+      </div>
+
+      <!-- The value proposition cards -->
+      <h3 style="font-family: var(--ff-serif); font-size: 1.25rem; color: var(--clr-white); margin-top: 4rem; margin-bottom: 1.5rem;" class="reveal">The Value Exchange</h3>
+
+      <div class="recommend">
+        <div class="recommend__card reveal">
+          <div class="recommend__tag">For Creators</div>
+          <div class="recommend__title">Why Creators Join</div>
+          <div class="recommend__text">
+            Zero cost of living means 100% of net earnings go to savings, reinvestment, or personal goals. Creators get more than free housing &mdash; they get a creative community, shared studios, and collective brand leverage.
+          </div>
+          <ul class="recommend__list">
+            <li><span class="check">&#10003;</span> $0 housing, energy, and internet</li>
+            <li><span class="check">&#10003;</span> Shared content studio &amp; production equipment</li>
+            <li><span class="check">&#10003;</span> Community talent management &amp; brand deals</li>
+            <li><span class="check">&#10003;</span> Collaboration with 100 creators daily</li>
+            <li><span class="check">&#10003;</span> Unique dome village as a built-in content backdrop</li>
+            <li><span class="check">&#10003;</span> Keep 70% of all earnings &mdash; pay no rent or bills</li>
+          </ul>
+        </div>
+        <div class="recommend__card recommend__card--primary reveal">
+          <div class="recommend__tag">For Creator Village</div>
+          <div class="recommend__title">Self-Sustaining Operations</div>
+          <div class="recommend__text">
+            The 30% community share generates $800K in Year 1, scaling to $3.5M by Year 5 &mdash; enough to cover all operating expenses ($650K&ndash;$750K) and build a surplus fund for deploying new communities without ongoing grants or donations.
+          </div>
+          <ul class="recommend__list">
+            <li><span class="check">&#10003;</span> Covers 100% of community operating costs</li>
+            <li><span class="check">&#10003;</span> Generates surplus for expansion to new sites</li>
+            <li><span class="check">&#10003;</span> No dependence on government subsidies</li>
+            <li><span class="check">&#10003;</span> Built-in marketing &mdash; creators showcase the lifestyle</li>
+            <li><span class="check">&#10003;</span> Attracts brand sponsorships for the community itself</li>
+            <li><span class="check">&#10003;</span> Replicable model &mdash; each new community is self-funding</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Break-even analysis -->
+      <div class="callout callout--success reveal" style="margin-top: 2.5rem;">
+        <div class="callout__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Break-Even Analysis
+        </div>
+        <div class="callout__text">
+          Year 1 revenue ($800K) covers all operating costs ($650K&ndash;$750K) from day one with surplus. By Year 5, annual revenue reaches $3.5M with $2.75M in net surplus &mdash; generating <strong style="color: var(--clr-housing);">$7.3M+ cumulative surplus</strong> over 5 years against the $7.5M&ndash;$9.2M upfront investment. With government grants applied (up to $9.5M eligible), payback accelerates to <strong style="color: var(--clr-housing);">3&ndash;5 years</strong>. As creators grow their audiences, the surplus funds the next Creator Village community.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SOURCES
+       ========================================== -->
+  <section class="section--sm" id="sources">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">References</span>
+        <h2 class="section-title" style="font-size: 1.5rem;">Sources & <span class="housing-accent">citations.</span></h2>
+      </div>
+      <div class="sources reveal">
+        <ul class="sources__list">
+          <li>Cleado Sustainable Housing Ltd &mdash; Technical Specifications (2026)</li>
+          <li>Cleado Whitepaper: Dome Homes vs. Traditional Housing &mdash; Global Comparison, Jonas Svensson (Feb 2026)</li>
+          <li>Cleado Macroeconomic Effects Paper, Jonas Svensson (Jan 2026)</li>
+          <li>Cleado St. Lucia Deployment &mdash; Project Details &amp; Commercial Terms (Dec 2025)</li>
+          <li>Cleado Dome Floor Plans: Medical Clinic &amp; School configurations</li>
+          <li>Cleado Jamaica Deployment Data &amp; Hurricane Melissa (2025) Performance</li>
+          <li>NOAA NHC HURDAT2 (1995&ndash;2025) hurricane records</li>
+          <li>CDEMA &amp; NEMA disaster assessment reports</li>
+          <li>World Bank Urban Resilience Assessments</li>
+          <li>IRENA Renewable Energy Cost Database (2023)</li>
+          <li>USDA Land Values Report</li>
+          <li>Lincoln Institute of Land Policy, CLT research</li>
+          <li>Champlain Housing Trust annual reports</li>
+          <li>Dudley Neighbors Inc. community data</li>
+          <li>HUD CDBG and HOME program funding allocations (FY2025)</li>
+          <li>IRS LIHTC program data and 2026 expansion provisions</li>
+          <li>USDA Rural Development, Section 502 and Section 515 programs</li>
+          <li>National Renewable Energy Laboratory (NREL), rainwater harvesting economics</li>
+          <li>Greywater Action, system cost and savings data</li>
+          <li>EPA, Septic Systems Overview and cost guidance</li>
         </ul>
       </div>
+    </div>
+  </section>
 
-      <div>
-        <ul class="stack-list">
-          <li>
-            <div class="stack-list__num">04</div>
-            <div>
-              <div class="stack-list__title">Performance Standards</div>
-              <div class="stack-list__desc">If a creator consistently underperforms on content volume or quality, we flag it. If standards aren't met after a correction period, we recommend removal and you choose: continue with that creator or swap to a new one at no additional cost.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num">05</div>
-            <div>
-              <div class="stack-list__title">Creator Replacement</div>
-              <div class="stack-list__desc">If a creator leaves the community or is removed for any reason, your sponsorship transfers to the replacement creator in that dome. Your brand stays, the dome stays &mdash; only the creator changes.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num">06</div>
-            <div>
-              <div class="stack-list__title">Dedicated Escalation Path</div>
-              <div class="stack-list__desc">Issues don't sit in a queue. Your account manager handles concerns directly and you get a resolution within 48 hours, not weeks.</div>
-            </div>
-          </li>
-        </ul>
+  <!-- ==========================================
+       CTA — INVEST
+       ========================================== -->
+  <section style="padding: 5rem 0;">
+    <div class="container">
+      <div style="background: linear-gradient(135deg, rgba(244,197,66,0.12), rgba(244,197,66,0.04)); border: 2px solid rgba(244,197,66,0.3); border-radius: 20px; padding: 3.5rem; text-align: center;" class="reveal">
+        <h2 style="font-family: var(--ff-serif); font-size: 2rem; font-weight: 800; color: var(--clr-white); margin-bottom: 1rem;">Want to own 40% of this?</h2>
+        <p style="font-size: 1.05rem; color: var(--clr-text-muted); line-height: 1.8; max-width: 550px; margin: 0 auto 2rem;">100 homes. $0 cost to residents. A creator economy that funds everything. See the full investment opportunity.</p>
+        <a href="/sponsorship" style="display: inline-block; padding: 1rem 3rem; background: linear-gradient(135deg, #f4c542, #e0a800); color: #0a0a0c; font-weight: 800; font-size: 1.1rem; border-radius: 12px; text-decoration: none; letter-spacing: 0.02em; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 24px rgba(244,197,66,0.3);">View Sponsorship Packages &rarr;</a>
       </div>
     </div>
+  </section>
 
-    <div class="banner banner--teal" style="margin-top: 2rem;">
-      <strong>You always have the final say.</strong> If a creator isn't meeting your standards, we'll work to correct it. If it can't be corrected, we recommend removal &mdash; and you decide whether to stay with that creator or move to a new one. Your investment is protected.
-    </div>
-  </div>
-</div>
-
-
-<!-- ============================================ -->
-<!-- COMMUNITY CENTERS -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <span class="eyebrow">Premium Opportunities</span>
-    <h2 class="headline">Community center <em>sponsorships.</em></h2>
-    <p class="body-text" style="margin-bottom: 2rem;">3 shared domes with recording studios, podcast rooms, and collaboration spaces. Every creator in the community uses them &mdash; your brand reaches all 95+ creator audiences.</p>
-
-    <div class="center-cards">
-      <div class="center-card">
-        <div class="center-card__tier">Community Center 1</div>
-        <div class="center-card__price">$41,667/mo</div>
-        <div class="center-card__annual">$500,000/year</div>
-        <div class="center-card__desc">Full naming rights, interior branding, logo in all studio content, equipment credit, and event integration.</div>
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">Creator<span>Village</span></div>
+          <p class="footer__tagline">Building self-sustaining creator communities where housing and internet are free for all residents. Energy included with every Cleado dome.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Pillars</h4>
+          <ul class="footer__links">
+            <li><a href="/">Free Housing + Energy</a></li>
+            <li><a href="#">Free Internet</a></li>
+            <li><a href="#creator-community">Creator Economy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__col-title">This Page</h4>
+          <ul class="footer__links">
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#why-cleado">Why Cleado</a></li>
+            <li><a href="#payment-models">Ownership Model</a></li>
+            <li><a href="#budget">Budget</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Company</h4>
+          <ul class="footer__links">
+            <li><a href="/sponsorship">Sponsorship Packages</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#creator-community">Creator Model</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="center-card">
-        <div class="center-card__tier">Community Center 2</div>
-        <div class="center-card__price">$41,667/mo</div>
-        <div class="center-card__annual">$500,000/year</div>
-        <div class="center-card__desc">Full naming rights, interior branding, logo in all studio content, equipment credit, and event integration.</div>
-      </div>
-      <div class="center-card center-card--featured">
-        <div class="center-card__tier">Community Center 3</div>
-        <div class="center-card__price">$41,667/mo</div>
-        <div class="center-card__annual">$500,000/year</div>
-        <div class="center-card__desc">Full naming rights, interior branding, logo in all studio content, equipment credit, and event integration.</div>
-      </div>
-    </div>
-
-    <div class="banner banner--warm">
-      <strong>Why community centers are $500K:</strong> Each center is used by all 95+ creators. Every podcast, recording session, collaboration video, and community event flows through these spaces. One sponsor owns the entire identity &mdash; "The [Brand] Studio" &mdash; with exposure across every creator's content, year-round.
-    </div>
-  </div>
-</div>
-
-
-<!-- ============================================ -->
-<!-- FULL-SPONSOR DOMES -->
-
-
-<!-- ============================================ -->
-<!-- ACTIVATIONS -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap">
-    <span class="eyebrow">Recurring Activations</span>
-    <h2 class="headline">It's not just content. <em>It's a venue.</em></h2>
-    <p class="body-text" style="margin-bottom: 2rem;">FreeLife isn't a quiet suburb. It's a living, breathing content campus with a year-round calendar of events, sessions, and activations &mdash; all of which your brand can be part of.</p>
-
-    <div class="split">
-      <div>
-        <ul class="stack-list">
-          <li>
-            <div class="stack-list__num" style="background: var(--warm-dim); color: var(--warm);">01</div>
-            <div>
-              <div class="stack-list__title">Studio Sessions</div>
-              <div class="stack-list__desc">Free recording sessions for outside artists and musicians invited through the community. Every session filmed, every track credited, every collab posted. Your brand on the studio wall, in the content, and in the credits.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num" style="background: var(--warm-dim); color: var(--warm);">02</div>
-            <div>
-              <div class="stack-list__title">Concert Activations</div>
-              <div class="stack-list__desc">Live music events on the property &mdash; community creators performing, guest artists, DJ sets. Branded stages, signage, livestreams, and recap content across 95+ creator channels simultaneously.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num" style="background: var(--warm-dim); color: var(--warm);">03</div>
-            <div>
-              <div class="stack-list__title">Pool Party Activations</div>
-              <div class="stack-list__desc">Desert heat meets branded experiences. Product sampling, branded cabanas, photo moments, and wall-to-wall content from every creator in attendance. Think Coachella pool party &mdash; except it happens monthly, not once a year.</div>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div>
-        <ul class="stack-list">
-          <li>
-            <div class="stack-list__num" style="background: var(--warm-dim); color: var(--warm);">04</div>
-            <div>
-              <div class="stack-list__title">Holiday Activations</div>
-              <div class="stack-list__desc">Halloween, New Year's, Fourth of July, Super Bowl Sunday &mdash; every major moment becomes a community-wide branded event. 95+ creators all posting from the same activation on the same night.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num" style="background: var(--warm-dim); color: var(--warm);">05</div>
-            <div>
-              <div class="stack-list__title">Esports &amp; Gaming Competitions</div>
-              <div class="stack-list__desc">LAN tournaments, streaming marathons, and gaming events hosted in the community centers. Branded overlays, sponsored prize pools, and content from every participating creator's channel.</div>
-            </div>
-          </li>
-          <li>
-            <div class="stack-list__num" style="background: var(--warm-dim); color: var(--warm);">06</div>
-            <div>
-              <div class="stack-list__title">Athletic &amp; Fitness Competitions</div>
-              <div class="stack-list__desc">Community fitness challenges, obstacle courses, creator vs. creator matchups. Branded apparel, supplement sponsors, equipment partners &mdash; all filmed by every participant and spectator.</div>
-            </div>
-          </li>
-        </ul>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Creator Village Inc. All rights reserved.</span>
+        <span>Founded by Chris Moraites</span>
       </div>
     </div>
+  </footer>
 
-    <div class="stat-row" style="border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 2rem 0;">
-      <div class="stat-row__item">
-        <div class="stat-row__num--warm stat-row__num">12+</div>
-        <div class="stat-row__label">Major activations per year minimum. Monthly pool parties, quarterly concerts, holiday events, and ongoing competitions.</div>
-      </div>
-      <div class="stat-row__item">
-        <div class="stat-row__num">95+</div>
-        <div class="stat-row__label">Creators posting from every event. One activation = hundreds of content pieces across every platform, overnight.</div>
-      </div>
-      <div class="stat-row__item">
-        <div class="stat-row__num--green stat-row__num">$0</div>
-        <div class="stat-row__label">Extra cost for dome sponsors. Your brand is already integrated. Activations amplify what you're already paying for.</div>
-      </div>
-    </div>
+  <!-- ==========================================
+       JAVASCRIPT
+       ========================================== -->
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
 
-    <div class="banner banner--warm">
-      <strong>Every activation is a content explosion.</strong> When 95+ creators attend the same event and all post about it on the same night, your brand doesn't get one mention &mdash; it gets a coordinated wave across TikTok, Instagram, YouTube, and Twitch simultaneously. That's the difference between sponsoring an event and sponsoring a community that <strong>is</strong> the event.
-    </div>
-  </div>
-</div>
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
 
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
 
-<!-- ============================================ -->
-<!-- SCARCITY -->
-<!-- ============================================ -->
-<div class="section">
-  <div class="wrap" style="text-align: center;">
-    <span class="eyebrow" style="display: block;">Limited Inventory</span>
-    <h2 class="headline">Once they're taken, <em>they're taken.</em></h2>
+    mobileClose.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
 
-    <div class="scarcity-bar" style="margin: 3rem 0;">
-      <div class="scarcity-item">
-        <div class="scarcity-item__num">95</div>
-        <div class="scarcity-item__label">Dome sponsorships<br><span style="color: var(--dim);">One brand per dome. Once it's taken, it's gone.</span></div>
-      </div>
-      <div class="scarcity-item">
-        <div class="scarcity-item__num">3</div>
-        <div class="scarcity-item__label">Community center title sponsors<br><span style="color: var(--dim);">Once a brand owns a center, it's locked.</span></div>
-      </div>
-    </div>
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
 
-    <div class="banner banner--warm" style="text-align: left; max-width: 700px; margin: 0 auto;">
-      <strong>First-mover advantage is real.</strong> A brand that locks in 19 domes today owns nearly a fifth of the community. One brand per dome &mdash; no competing sponsors, no split attention. Once a dome is taken, it's gone.
-    </div>
-  </div>
-</div>
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
+    revealElements.forEach(el => revealObserver.observe(el));
 
-<!-- ============================================ -->
-<!-- CTA -->
-<!-- ============================================ -->
-<div class="cta">
-  <span class="eyebrow" style="display: block;">Get Started</span>
-  <h2 class="headline">Ready to <em>move in?</em></h2>
-  <p class="body-text" style="max-width: 480px; margin: 0.5rem auto 0; text-align: center;">Whether you want a single dome or a 19-dome pack across the community, we'll build a package that fits.</p>
-
-  <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
-    <a class="cta__email" href="mailto:chris@siki.io">chris@siki.io</a>
-    <a class="cta__email" href="mailto:nick@siki.io">nick@siki.io</a>
-  </div>
-
-</div>
-
-
-<!-- ============================================ -->
-<!-- FOOTER -->
-<!-- ============================================ -->
-<div class="footer">
-  <p>FreeLife &mdash; Brand Sponsorship Packages &mdash; 2026</p>
-  <p style="margin-top: 0.5rem;">Creator community: 38 nano (10K&ndash;50K), 37 micro (50K&ndash;100K), 20 mid-tier (100K&ndash;500K). 12-month minimum. All rates subject to availability.</p>
-</div>
-
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
