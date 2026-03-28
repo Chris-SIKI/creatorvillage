@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Village &times; Cleado &mdash; Partnership Overview</title>
+  <meta name="description" content="How Creator Village turns 100 Cleado domes into a permanent, always-on marketing engine powered by 95 content creators.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Creator Village &times; Cleado &mdash; Partnership Overview">
+  <meta property="og:description" content="100 Cleado domes. 95 content creators. A community that markets itself.">
+  <meta property="og:image" content="https://creatorvillage.org/dome-community.png">
+  <meta property="og:url" content="https://creatorvillage.org/cleado">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --clr-bg: #0a0a0c;
+      --clr-bg-alt: #111115;
+      --clr-bg-card: #16161a;
+      --clr-bg-card-hover: #1c1c22;
+      --clr-surface: #1e1e24;
+      --clr-border: rgba(255,255,255,0.06);
+      --clr-border-light: rgba(255,255,255,0.1);
+      --clr-text: #e8e6e3;
+      --clr-text-muted: #8a8a8e;
+      --clr-text-dim: #5a5a5e;
+      --clr-white: #ffffff;
+
+      --clr-cleado: #4ecdc4;
+      --clr-cleado-glow: rgba(78,205,196,0.15);
+      --clr-cleado-deep: rgba(78,205,196,0.08);
+      --clr-energy: #f4c542;
+      --clr-energy-glow: rgba(244,197,66,0.15);
+      --clr-energy-deep: rgba(244,197,66,0.08);
+      --clr-food: #7bc67e;
+      --clr-accent: #a78bfa;
+      --clr-accent-glow: rgba(167,139,250,0.12);
+
+      --ff-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --ff-serif: 'Playfair Display', Georgia, serif;
+
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--ff-sans);
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    ::selection {
+      background: var(--clr-cleado);
+      color: var(--clr-bg);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: 7rem 0;
+      position: relative;
+    }
+
+    .section--sm { padding: 5rem 0; }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--clr-cleado);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 2rem;
+      height: 1px;
+      background: var(--clr-cleado);
+    }
+
+    .section-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--clr-white);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--clr-text-muted);
+      max-width: 650px;
+      line-height: 1.8;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--clr-border);
+      border: none;
+    }
+
+    .cleado-accent { color: var(--clr-cleado); }
+
+    /* BACKGROUND */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.07;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-glow--1 {
+      top: -200px;
+      right: -100px;
+      background: var(--clr-cleado);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .bg-glow--2 {
+      bottom: 20%;
+      left: -200px;
+      background: var(--clr-cleado);
+      animation: float 25s ease-in-out infinite reverse;
+    }
+
+    .bg-glow--3 {
+      top: 50%;
+      right: -150px;
+      background: var(--clr-accent);
+      animation: float 22s ease-in-out infinite 5s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.05); }
+      66% { transform: translate(-20px, 30px) scale(0.95); }
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      transition: all 0.4s var(--ease-out);
+    }
+
+    .nav.scrolled {
+      background: rgba(10,10,12,0.85);
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      border-bottom: 1px solid var(--clr-border);
+      padding: 0.75rem 0;
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav__logo {
+      font-family: var(--ff-serif);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--clr-white);
+      letter-spacing: -0.02em;
+    }
+
+    .nav__logo span { color: var(--clr-food); }
+    .nav__logo .x { color: var(--clr-text-dim); font-weight: 400; margin: 0 0.5rem; font-size: 1.1rem; }
+    .nav__logo .cleado-mark { color: var(--clr-cleado); }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--clr-text-muted);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--clr-cleado);
+      border-radius: 1px;
+      transition: width 0.3s var(--ease-out);
+    }
+
+    .nav__links a:hover { color: var(--clr-white); }
+    .nav__links a:hover::after { width: 100%; }
+
+    .nav__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--clr-text-muted);
+      transition: color 0.3s;
+    }
+    .nav__back:hover { color: var(--clr-cleado); }
+    .nav__back svg { width: 16px; height: 16px; transition: transform 0.3s var(--ease-out); }
+    .nav__back:hover svg { transform: translateX(-4px); }
+
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav__hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--clr-white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .nav__mobile {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,10,12,0.97);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .nav__mobile.active { display: flex; }
+    .nav__mobile a { font-size: 1.25rem; font-weight: 500; color: var(--clr-text-muted); transition: color 0.3s; }
+    .nav__mobile a:hover { color: var(--clr-cleado); }
+    .nav__mobile-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: var(--clr-white); font-size: 1.5rem; cursor: pointer; }
+
+    /* HERO */
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 10rem 0 5rem;
+    }
+
+    .hero__content { max-width: 800px; }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.5rem 1.25rem;
+      background: var(--clr-cleado-deep);
+      border: 1px solid rgba(78,205,196,0.2);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--clr-cleado);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.8s var(--ease-out) 0.1s both;
+    }
+
+    .hero__badge .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--clr-cleado);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero__title {
+      font-family: var(--ff-serif);
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      color: var(--clr-white);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+      animation: fadeInUp 0.8s var(--ease-out) 0.2s both;
+    }
+
+    .hero__subtitle {
+      font-size: 1.3rem;
+      color: var(--clr-text-muted);
+      max-width: 620px;
+      line-height: 1.7;
+      animation: fadeInUp 0.8s var(--ease-out) 0.3s both;
+    }
+
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--clr-border);
+      animation: fadeInUp 0.8s var(--ease-out) 0.5s both;
+    }
+
+    .hero__stat-value {
+      font-family: var(--ff-serif);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--clr-cleado);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero__stat-label {
+      font-size: 0.78rem;
+      color: var(--clr-text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CONTENT CARDS */
+    .content-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .content-card {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .content-card:hover { border-color: var(--clr-border-light); }
+
+    .content-card__icon {
+      margin-bottom: 1.25rem;
+      color: var(--clr-cleado);
+    }
+    .content-card__icon svg { width: 40px; height: 40px; }
+
+    .content-card__title {
+      font-family: var(--ff-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--clr-white);
+      margin-bottom: 1rem;
+    }
+
+    .content-card__text {
+      font-size: 0.92rem;
+      color: var(--clr-text-muted);
+      line-height: 1.8;
+    }
+
+    .content-card__value {
+      font-family: var(--ff-serif);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--clr-cleado);
+      margin-bottom: 0.5rem;
+    }
+
+    /* STEPS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 16px;
+      padding: 2rem;
+      position: relative;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .step:hover {
+      border-color: rgba(78,205,196,0.25);
+      transform: translateY(-4px);
+    }
+
+    .step__number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--clr-cleado-glow);
+      color: var(--clr-cleado);
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step__title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--clr-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .step__desc {
+      font-size: 0.85rem;
+      color: var(--clr-text-muted);
+      line-height: 1.7;
+    }
+
+    /* DATA TABLES */
+    .data-table-wrapper {
+      overflow-x: auto;
+      margin-top: 2rem;
+      border-radius: 16px;
+      border: 1px solid var(--clr-border);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .data-table thead { background: var(--clr-surface); }
+
+    .data-table th {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--clr-cleado);
+      border-bottom: 1px solid var(--clr-border);
+      white-space: nowrap;
+    }
+
+    .data-table td {
+      padding: 0.9rem 1.25rem;
+      color: var(--clr-text);
+      border-bottom: 1px solid var(--clr-border);
+      vertical-align: top;
+    }
+
+    .data-table tbody tr {
+      background: var(--clr-bg-card);
+      transition: background 0.2s;
+    }
+
+    .data-table tbody tr:hover { background: var(--clr-bg-card-hover); }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    .data-table .highlight-row {
+      background: rgba(78,205,196,0.06);
+      font-weight: 600;
+    }
+    .data-table .highlight-row td { color: var(--clr-white); }
+
+    .data-table .total-row { background: rgba(78,205,196,0.08); }
+    .data-table .total-row td {
+      font-weight: 700;
+      color: var(--clr-white);
+      border-top: 2px solid rgba(78,205,196,0.3);
+    }
+
+    /* CALLOUT BOX */
+    .callout {
+      background: linear-gradient(135deg, rgba(78,205,196,0.08), rgba(78,205,196,0.03));
+      border: 1px solid rgba(78,205,196,0.2);
+      border-left: 4px solid var(--clr-cleado);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      margin-top: 2rem;
+    }
+
+    .callout__title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--clr-cleado);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .callout__text {
+      font-size: 0.9rem;
+      color: var(--clr-text-muted);
+      line-height: 1.8;
+    }
+
+    /* PROTECT / CHANNEL CARDS */
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .channel-card {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .channel-card:hover {
+      border-color: rgba(78,205,196,0.25);
+      transform: translateY(-3px);
+    }
+
+    .channel-card__icon {
+      margin-bottom: 1rem;
+      color: var(--clr-cleado);
+    }
+    .channel-card__icon svg { width: 40px; height: 40px; }
+
+    .channel-card__title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--clr-white);
+      margin-bottom: 0.75rem;
+    }
+
+    .channel-card__text {
+      font-size: 0.85rem;
+      color: var(--clr-text-muted);
+      line-height: 1.7;
+    }
+
+    /* PASSIVE/KPI CARDS */
+    .passive-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .passive-card {
+      background: var(--clr-bg-card);
+      border: 1px solid var(--clr-border);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .passive-card:hover { border-color: rgba(78,205,196,0.25); }
+
+    .passive-card__value {
+      font-family: var(--ff-serif);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--clr-cleado);
+      margin-bottom: 0.25rem;
+    }
+
+    .passive-card__label {
+      font-size: 0.85rem;
+      color: var(--clr-text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .passive-card__sub {
+      font-size: 0.75rem;
+      color: var(--clr-text-dim);
+    }
+
+    /* TWO-COL TEXT */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2.5rem;
+    }
+
+    .two-col__item {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--clr-text);
+    }
+
+    .two-col__item strong { color: var(--clr-white); font-weight: 600; }
+
+    /* CTA BOX */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(78,205,196,0.12), rgba(78,205,196,0.04));
+      border: 2px solid rgba(78,205,196,0.3);
+      border-radius: 20px;
+      padding: 3.5rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .cta-box__title {
+      font-family: var(--ff-serif);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--clr-white);
+      margin-bottom: 1rem;
+    }
+
+    .cta-box__text {
+      font-size: 1.05rem;
+      color: var(--clr-text-muted);
+      line-height: 1.8;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    .cta-box__contact {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--clr-cleado);
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid var(--clr-border);
+      padding: 4rem 0 3rem;
+    }
+
+    .footer__brand {
+      font-family: var(--ff-serif);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--clr-white);
+      margin-bottom: 1rem;
+    }
+    .footer__brand span { color: var(--clr-food); }
+
+    .footer__tagline {
+      font-size: 0.88rem;
+      color: var(--clr-text-dim);
+      line-height: 1.7;
+      max-width: 300px;
+    }
+
+    .footer__bottom {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--clr-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--clr-text-dim);
+    }
+
+    /* SCROLL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero__stats { grid-template-columns: repeat(2, 1fr); }
+      .content-cards { grid-template-columns: 1fr; }
+      .channel-grid { grid-template-columns: 1fr; }
+      .passive-grid { grid-template-columns: repeat(2, 1fr); }
+      .two-col { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 5rem 0; }
+      .container { padding: 0 1.25rem; }
+      .nav__links { display: none; }
+      .nav__hamburger { display: flex; }
+      .hero { min-height: auto; padding: 7rem 0 4rem; }
+      .hero__stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+      .hero__stat-value { font-size: 1.8rem; }
+      .steps { grid-template-columns: 1fr; }
+      .passive-grid { grid-template-columns: 1fr; }
+      .cta-box { padding: 2.5rem 1.5rem; }
+      .footer__bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero__title { font-size: 2.5rem; }
+      .hero__stats { grid-template-columns: 1fr 1fr; }
+      .data-table { font-size: 0.78rem; }
+      .data-table th, .data-table td { padding: 0.65rem 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--1"></div>
+  <div class="bg-glow bg-glow--2"></div>
+  <div class="bg-glow bg-glow--3"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="/" class="nav__logo">Creator<span>Village</span><span class="x">&times;</span><span class="cleado-mark">Cleado</span></a>
+      <ul class="nav__links">
+        <li><a href="#the-opportunity">The Opportunity</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#channels">Marketing Channels</a></li>
+        <li><a href="#by-the-numbers">By the Numbers</a></li>
+        <li><a href="#why-now">Why Now</a></li>
+        <li>
+          <a href="/" class="nav__back">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+            Home
+          </a>
+        </li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav__mobile" id="mobileMenu">
+    <button class="nav__mobile-close" id="mobileClose" aria-label="Close menu">&times;</button>
+    <a href="#the-opportunity" class="mobile-link">The Opportunity</a>
+    <a href="#how-it-works" class="mobile-link">How It Works</a>
+    <a href="#channels" class="mobile-link">Marketing Channels</a>
+    <a href="#by-the-numbers" class="mobile-link">By the Numbers</a>
+    <a href="#why-now" class="mobile-link">Why Now</a>
+    <a href="/" class="mobile-link">Home</a>
+  </div>
+
+  <!-- ==========================================
+       HERO
+       ========================================== -->
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="hero__content">
+        <div class="hero__badge">
+          <span class="dot"></span>
+          Partnership Overview
+        </div>
+        <h1 class="hero__title">100 domes. 95 creators. <span class="cleado-accent">Always-on marketing.</span></h1>
+        <p class="hero__subtitle">
+          Creator Village turns Cleado domes into the most filmed, most shared, most visible housing product on earth &mdash; without spending a dollar on advertising.
+        </p>
+      </div>
+      <div class="hero__stats">
+        <div>
+          <div class="hero__stat-value">95</div>
+          <div class="hero__stat-label">Creators Filming Daily</div>
+        </div>
+        <div>
+          <div class="hero__stat-value">100</div>
+          <div class="hero__stat-label">Cleado Domes Deployed</div>
+        </div>
+        <div>
+          <div class="hero__stat-value">24/7</div>
+          <div class="hero__stat-label">Organic Content Engine</div>
+        </div>
+        <div>
+          <div class="hero__stat-value">$0</div>
+          <div class="hero__stat-label">Ad Spend Required</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 1: THE OPPORTUNITY
+       ========================================== -->
+  <section class="section" id="the-opportunity">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">The Opportunity</span>
+        <h2 class="section-title">Your product becomes <span class="cleado-accent">the set.</span></h2>
+        <p class="section-subtitle">
+          Creator Village is a gated community of 100 Cleado geodesic domes in Clark County, Nevada &mdash; 30 minutes from the Las Vegas Strip. 95 content creators live here full-time, producing daily content from inside their Cleado homes. Every video, every livestream, every photo has a Cleado dome as the literal backdrop.
+        </p>
+      </div>
+
+      <div class="two-col reveal">
+        <div class="two-col__item">
+          <strong>Nobody scrolls past a dome.</strong> Traditional housing is invisible on social media. Nobody films their apartment hallway. Nobody shares their subdivision. But 100 geodesic domes in the Nevada desert? That's something people stop and say <em>&ldquo;what is that?&rdquo;</em> &mdash; and that curiosity is worth more than any ad buy. Every piece of content created here features Cleado&rsquo;s product front and center, without it ever feeling like a commercial.
+        </div>
+        <div class="two-col__item">
+          <strong>This isn&rsquo;t a sponsorship. It&rsquo;s infrastructure.</strong> Sponsorships end. Campaigns expire. Creator Village is a permanent, physical community where 95 creators wake up inside Cleado domes every single day. When one creator films a dome tour that gets 2M views, that&rsquo;s Cleado marketing. When a brand shoots a campaign on-site, the dome is the backdrop. When press covers the community, it&rsquo;s &ldquo;the Cleado dome village.&rdquo; The architecture markets itself.
+        </div>
+      </div>
+
+      <div class="callout reveal" style="margin-top: 2.5rem;">
+        <div class="callout__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          The Core Thesis
+        </div>
+        <div class="callout__text">
+          Instead of running ads, Cleado gets <strong style="color: var(--clr-cleado);">95 content creators living inside the product</strong> and filming it every day. At even modest audience sizes (10K&ndash;100K per creator), the combined monthly impressions across 95 creators reach <strong style="color: var(--clr-cleado);">tens of millions</strong> &mdash; all featuring Cleado as the literal backdrop. That&rsquo;s organic product placement at a scale no campaign can match.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 2: HOW IT WORKS
+       ========================================== -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">How It Works</span>
+        <h2 class="section-title">The <span class="cleado-accent">content flywheel.</span></h2>
+        <p class="section-subtitle">
+          Every stage of the Creator Village lifecycle generates marketing value for Cleado &mdash; from construction to daily life to scale.
+        </p>
+      </div>
+
+      <div class="steps reveal">
+        <div class="step">
+          <div class="step__number">1</div>
+          <div class="step__title">Domes Go Up</div>
+          <div class="step__desc">100 Cleado domes deployed on 7.7 acres. Time-lapse video of flat-packed panels becoming livable homes in 12 hours. The deployment story alone is a viral moment &mdash; millions of views before a single creator moves in.</div>
+        </div>
+        <div class="step">
+          <div class="step__number">2</div>
+          <div class="step__title">Creators Move In</div>
+          <div class="step__desc">95 content creators move into their Cleado dome homes. Day-one content: move-in vlogs, dome tours, &ldquo;I live in a dome&rdquo; reveals. Each one is authentic, shareable, and features the product in real lived context.</div>
+        </div>
+        <div class="step">
+          <div class="step__number">3</div>
+          <div class="step__title">Daily Content</div>
+          <div class="step__desc">Every YouTube vlog, TikTok, Instagram story, and livestream is filmed inside or in front of a Cleado dome. The product is visible in every frame &mdash; not as an ad, but as someone&rsquo;s actual home.</div>
+        </div>
+        <div class="step">
+          <div class="step__number">4</div>
+          <div class="step__title">Brands Move In</div>
+          <div class="step__desc">Fortune 500 sponsors operate campaigns inside Cleado domes. Brand adjacency elevates Cleado from &ldquo;dome manufacturer&rdquo; to &ldquo;the infrastructure behind major brand activations.&rdquo;</div>
+        </div>
+        <div class="step">
+          <div class="step__number">5</div>
+          <div class="step__title">Press &amp; Media</div>
+          <div class="step__desc">A dome village for creators in the Nevada desert is inherently a story. Architecture, tech, housing, creator economy press all cover the community. Cleado is in every headline without a single pitch.</div>
+        </div>
+        <div class="step">
+          <div class="step__number">6</div>
+          <div class="step__title">Scale</div>
+          <div class="step__desc">Revenue funds new Creator Village sites. Each new village = another 100+ dome purchase order for Cleado, and another permanent marketing engine in a new market.</div>
+        </div>
+      </div>
+
+      <div class="callout reveal" style="margin-top: 2.5rem;">
+        <div class="callout__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          Compounding Returns
+        </div>
+        <div class="callout__text">
+          Creators grow their audiences &rarr; more eyes on Cleado domes &rarr; more brand sponsors want in &rarr; more revenue for the village &rarr; ability to fund new Creator Village sites &rarr; <strong style="color: var(--clr-cleado);">more Cleado dome orders</strong>. Each new village is another 100-dome purchase and another permanent marketing engine.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 3: MARKETING CHANNELS
+       ========================================== -->
+  <section class="section" id="channels">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Marketing Channels</span>
+        <h2 class="section-title">What Cleado <span class="cleado-accent">gets.</span></h2>
+        <p class="section-subtitle">
+          Every channel below is generated organically by the community existing. No ad budget, no agency retainers, no campaign timelines.
+        </p>
+      </div>
+
+      <div class="channel-grid reveal">
+        <div class="channel-card">
+          <div class="channel-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+          <div class="channel-card__title">Organic Social</div>
+          <div class="channel-card__text">95 creators posting daily from Cleado domes across YouTube, TikTok, Instagram, and Twitch. Every piece of content features the product organically.</div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <div class="channel-card__title">Viral Moments</div>
+          <div class="channel-card__text">Dome tours, 12-hour deployment time-lapses, desert aerial drone shots. The architecture is inherently shareable &mdash; nobody scrolls past 100 domes in the desert.</div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></div>
+          <div class="channel-card__title">Press &amp; Media</div>
+          <div class="channel-card__text">Architecture, housing, tech, and creator economy publications all cover the community. Every feature article shows Cleado domes front and center.</div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <div class="channel-card__title">Brand Adjacency</div>
+          <div class="channel-card__text">Fortune 500 sponsors operating campaigns inside Cleado domes. Major brands associate themselves with the product as the container for their activations.</div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div class="channel-card__title">B2B Showroom</div>
+          <div class="channel-card__text">When selling to developers, municipalities, or housing authorities: &ldquo;Come see 100 domes operating in a real community. Walk inside. Talk to residents. See the solar output.&rdquo;</div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+          <div class="channel-card__title">Solar Showcase</div>
+          <div class="channel-card__text">Real off-grid energy data from 100 operating domes. Creators sharing their zero-energy-bill lifestyle is ongoing, organic marketing for Cleado&rsquo;s solar integration.</div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+          <div class="channel-card__title">Durability Proof</div>
+          <div class="channel-card__text">Daily lived-in footage proving hurricane-proof claims in real conditions. Cat-5 survival goes from a spec-sheet stat to something audiences see for themselves.</div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
+          <div class="channel-card__title">Event Content</div>
+          <div class="channel-card__text">Concerts, gaming tournaments, pool parties, and socials &mdash; all filmed inside and around Cleado domes. Livestreamed across 95+ channels simultaneously.</div>
+        </div>
+        <div class="channel-card">
+          <div class="channel-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+          <div class="channel-card__title">Scale Pipeline</div>
+          <div class="channel-card__text">Every new Creator Village site = another 100+ dome purchase order. The community model is designed to replicate, creating a recurring sales channel for Cleado.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 4: BY THE NUMBERS
+       ========================================== -->
+  <section class="section" id="by-the-numbers">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">By the Numbers</span>
+        <h2 class="section-title">The marketing <span class="cleado-accent">math.</span></h2>
+        <p class="section-subtitle">
+          Conservative estimates based on 95 creators with modest audience sizes. Actual reach will grow as creators and the community gain traction.
+        </p>
+      </div>
+
+      <div class="passive-grid reveal">
+        <div class="passive-card">
+          <div class="passive-card__value">95</div>
+          <div class="passive-card__label">Active Creators</div>
+          <div class="passive-card__sub">Full-time residents</div>
+        </div>
+        <div class="passive-card">
+          <div class="passive-card__value">365</div>
+          <div class="passive-card__label">Days/Year</div>
+          <div class="passive-card__sub">Always-on content</div>
+        </div>
+        <div class="passive-card">
+          <div class="passive-card__value">Millions</div>
+          <div class="passive-card__label">Monthly Impressions</div>
+          <div class="passive-card__sub">Combined creator reach</div>
+        </div>
+        <div class="passive-card">
+          <div class="passive-card__value">$0</div>
+          <div class="passive-card__label">Ad Spend</div>
+          <div class="passive-card__sub">100% organic</div>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <h3 style="font-family: var(--ff-serif); font-size: 1.25rem; color: var(--clr-white); margin-top: 4rem; margin-bottom: 0.5rem;" class="reveal">Traditional Marketing vs. Creator Village</h3>
+      <p style="font-size: 0.92rem; color: var(--clr-text-muted); margin-bottom: 0.5rem;" class="reveal">What you&rsquo;d pay for equivalent reach through traditional channels vs. what Creator Village generates organically.</p>
+
+      <div class="data-table-wrapper reveal">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Channel</th>
+              <th>Traditional Cost</th>
+              <th>Creator Village</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight: 600; color: var(--clr-white);">Social media content (95 creators, daily)</td>
+              <td>$500&ndash;$5,000/post &times; 95 &times; 365 = millions/year</td>
+              <td style="color: var(--clr-cleado); font-weight: 600;">Organic &mdash; $0</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 600; color: var(--clr-white);">Influencer dome tours (video reviews)</td>
+              <td>$10K&ndash;$50K per sponsored video</td>
+              <td style="color: var(--clr-cleado); font-weight: 600;">Organic &mdash; $0</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 600; color: var(--clr-white);">Press coverage (architecture / housing media)</td>
+              <td>$15K&ndash;$50K/month PR retainer</td>
+              <td style="color: var(--clr-cleado); font-weight: 600;">Organic &mdash; $0</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 600; color: var(--clr-white);">B2B showroom / model home community</td>
+              <td>$500K&ndash;$2M to build + staff</td>
+              <td style="color: var(--clr-cleado); font-weight: 600;">Built-in &mdash; $0</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 600; color: var(--clr-white);">Brand partnership co-marketing</td>
+              <td>$100K&ndash;$500K/campaign</td>
+              <td style="color: var(--clr-cleado); font-weight: 600;">Organic &mdash; $0</td>
+            </tr>
+            <tr class="total-row">
+              <td>Equivalent annual marketing value</td>
+              <td style="color: var(--clr-text-muted);">$2M&ndash;$10M+/year</td>
+              <td style="color: var(--clr-cleado); font-weight: 800;">$0 cost to Cleado</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Dome Specs -->
+      <h3 style="font-family: var(--ff-serif); font-size: 1.25rem; color: var(--clr-white); margin-top: 4rem; margin-bottom: 0.5rem;" class="reveal">Creator Village Order</h3>
+      <p style="font-size: 0.92rem; color: var(--clr-text-muted); margin-bottom: 0.5rem;" class="reveal">Initial deployment: 100 Cleado domes across a single 7.7-acre community in Clark County, Nevada.</p>
+
+      <div class="data-table-wrapper reveal">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Spec</th>
+              <th style="text-align: right;">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight: 600; color: var(--clr-white);">Residential domes</td>
+              <td>97</td>
+              <td>9-meter Cleado geodesic, integrated solar</td>
+              <td style="text-align: right; color: var(--clr-cleado); font-weight: 600;">$5,529,000</td>
+            </tr>
+            <tr>
+              <td style="font-weight: 600; color: var(--clr-white);">Community domes</td>
+              <td>3</td>
+              <td>14-meter Cleado geodesic, studios &amp; event space</td>
+              <td style="text-align: right; color: var(--clr-cleado); font-weight: 600;">$540,000</td>
+            </tr>
+            <tr class="total-row">
+              <td>Total Cleado order</td>
+              <td>100 domes</td>
+              <td></td>
+              <td style="text-align: right; color: var(--clr-cleado); font-weight: 800;">$6,069,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout reveal" style="margin-top: 2rem;">
+        <div class="callout__title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          Repeat Orders at Scale
+        </div>
+        <div class="callout__text">
+          Creator Village is designed to replicate. Each new community = <strong style="color: var(--clr-cleado);">100+ dome orders</strong>. Surplus revenue from the first village funds site #2, then #3. Cleado gets a recurring, growing sales channel &mdash; not a one-time order.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 5: CLEADO PRODUCT SHOWCASE
+       ========================================== -->
+  <section class="section" id="product">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Product Showcase</span>
+        <h2 class="section-title">Why we chose <span class="cleado-accent">Cleado.</span></h2>
+        <p class="section-subtitle">
+          We evaluated every dome manufacturer on the market. Cleado won on every metric that matters for a creator community: speed, cost, durability, solar integration, and visual impact.
+        </p>
+      </div>
+
+      <div class="content-cards reveal">
+        <div class="content-card">
+          <div class="content-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="content-card__value">12 hrs</div>
+          <div class="content-card__title">Deployment Time</div>
+          <div class="content-card__text">
+            Traditional construction takes 6&ndash;12 months. A Cleado dome deploys in 12 hours. 100 domes go up in weeks, not years &mdash; and the time-lapse content from deployment alone is worth millions in organic reach.
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="content-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+          <div class="content-card__value">20 m&sup2;</div>
+          <div class="content-card__title">Integrated Solar</div>
+          <div class="content-card__text">
+            Each dome generates 7&ndash;9K kWh/year through built-in thin-film solar panels. 100% off-grid capable. Creators living with zero energy bills is a story that tells itself &mdash; on camera, every month.
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="content-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="content-card__value">Cat-5</div>
+          <div class="content-card__title">Hurricane Proven</div>
+          <div class="content-card__text">
+            Cleado domes survived Hurricane Melissa (Category 5, Jamaica, 2025) with zero failures. That&rsquo;s not a lab test &mdash; it&rsquo;s a real-world proof point that resonates with every buyer, developer, and government partner.
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col reveal" style="margin-top: 3rem;">
+        <div class="two-col__item">
+          <strong>128,200 homes signed globally.</strong> Cleado isn&rsquo;t a startup with a prototype. With $15.7B in projected lifetime revenue and deployments across multiple continents, the technology is proven, the supply chain is established, and the product is ready to scale. Creator Village is the first community-scale deployment in the U.S. &mdash; a reference project that opens the American market.
+        </div>
+        <div class="two-col__item">
+          <strong>$57K per home vs. $300K+ traditional.</strong> The cost structure is what makes the entire Creator Village model viable. At $57K per dome, brand sponsorship revenue can fully cover housing costs for residents. That&rsquo;s impossible with traditional construction. Cleado&rsquo;s price point doesn&rsquo;t just save money &mdash; it unlocks a business model that wouldn&rsquo;t exist otherwise.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 6: WHY NOW
+       ========================================== -->
+  <section class="section" id="why-now">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Market Timing</span>
+        <h2 class="section-title">Why <span class="cleado-accent">now.</span></h2>
+        <p class="section-subtitle">
+          Three forces are converging that make Creator Village &mdash; and its marketing value for Cleado &mdash; uniquely powerful right now.
+        </p>
+      </div>
+
+      <div class="content-cards reveal">
+        <div class="content-card">
+          <div class="content-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+          <div class="content-card__title">Creator Economy Explosion</div>
+          <div class="content-card__text">
+            $250B+ in 2024, projected to hit $480B+ by 2027. Brands are moving budgets from traditional advertising to creator partnerships. A community of 95 creators is an irresistible content distribution network &mdash; and every piece of content features Cleado.
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="content-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div class="content-card__title">U.S. Housing Crisis</div>
+          <div class="content-card__text">
+            50%+ of renters are cost-burdened. Traditional construction: 6&ndash;12 months, $300K+ per home. Cleado: 12 hours, $57K. The affordability gap creates massive demand for alternative housing &mdash; and Creator Village puts Cleado&rsquo;s solution in front of millions of viewers.
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="content-card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+          <div class="content-card__title">Solar + Sustainability Wave</div>
+          <div class="content-card__text">
+            Consumer demand for sustainable housing is at an all-time high. Cleado&rsquo;s integrated solar makes every dome a zero-energy-bill story. Creator Village puts that narrative in front of audiences daily &mdash; not as a whitepaper, but as lived experience.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><hr class="divider"></div>
+
+  <!-- ==========================================
+       SECTION 7: THE ASK
+       ========================================== -->
+  <section class="section" id="the-ask">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">The Partnership</span>
+        <h2 class="section-title">What we&rsquo;re <span class="cleado-accent">building together.</span></h2>
+        <p class="section-subtitle">
+          Creator Village is a $19M project developed by The RITE Plan Initiative, a 501(c)(3) nonprofit real estate developer. Cleado is our exclusive housing partner.
+        </p>
+      </div>
+
+      <div class="data-table-wrapper reveal" style="margin-top: 3rem;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>What Cleado Provides</th>
+              <th>What Cleado Gets</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>97 residential domes (9m) + 3 community domes (14m)</td>
+              <td style="color: var(--clr-cleado); font-weight: 600;">Largest single-site U.S. deployment &mdash; the reference project</td>
+            </tr>
+            <tr>
+              <td>On-site technical support during deployment</td>
+              <td style="color: var(--clr-cleado); font-weight: 600;">95 creators producing daily organic content featuring Cleado</td>
+            </tr>
+            <tr>
+              <td>Regulatory package support for Clark County permitting</td>
+              <td style="color: var(--clr-cleado); font-weight: 600;">Press, media, and brand adjacency at zero marketing cost</td>
+            </tr>
+            <tr>
+              <td>Ongoing warranty and maintenance support</td>
+              <td style="color: var(--clr-cleado); font-weight: 600;">Walk-through B2B showroom for U.S. buyers</td>
+            </tr>
+            <tr class="highlight-row">
+              <td>Standard Cleado pricing ($57K residential, $180K community)</td>
+              <td style="color: var(--clr-cleado); font-weight: 700;">Recurring 100+ dome orders as Creator Village scales to new sites</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cta-box reveal">
+        <div class="cta-box__title">Let&rsquo;s build the future of housing &mdash; together.</div>
+        <div class="cta-box__text">
+          Creator Village is ready to deploy. TRPI&rsquo;s 501(c)(3) financing covers $14M of the $19M project. Land acquisition and permitting are in motion. We need Cleado&rsquo;s domes to make it real &mdash; and Cleado gets the most powerful organic marketing engine in the housing industry.
+        </div>
+        <div class="cta-box__contact">chris@creatorvillage.org</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div class="footer__brand">Creator<span>Village</span></div>
+        <p class="footer__tagline" style="margin: 0 auto;">A sustainable creator community where all types of creators come together to collaborate and grow.</p>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 Creator Village Inc. All rights reserved.</span>
+        <span></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    mobileClose.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
